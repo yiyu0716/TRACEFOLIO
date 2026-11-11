@@ -6,6 +6,15 @@
 flowchart TD
   UI[TRACEFOLIO 求职工作台] --> API[Next.js API]
   API --> Career[职业记忆 / 证据 / 成长服务]
+  API --> Queue[(CareerTask / Source / Event)]
+  Queue --> Worker[独立 Node worker / 租约]
+  Worker --> AppServer[独立 Codex app-server / stdio]
+  AppServer --> MCP[任务专用 MCP / 回环 HTTP / 临时令牌]
+  MCP --> Scoped[简历 / JD / 授权证据 / 提案校验]
+  Worker --> Proposal[待确认提案]
+  Proposal --> Confirm[网页核对 / revision + digest]
+  Confirm --> Save[事务内校验来源 / 创建一次新版本]
+  Save --> DB
   API --> Existing[LuJie 简历 / 岗位 / 面试服务]
   Career --> DB[(Prisma + SQLite)]
   Existing --> DB
@@ -25,9 +34,21 @@ flowchart TD
 
 应用层继承 LuJie 的 Next.js 16 / React 19、Prisma、SQLite、AI SDK、简历编辑与导出、岗位和投递记录、面试生成和应用内 Agent。`src/lib/career/` 是新增领域模块，`/intelligence` 是新增工作区。
 
-Codex 接入目前集中在 `src/lib/career/codex.ts`：通过官方 TypeScript SDK 执行一个有明确输出结构的证据分析任务，不维护 Codex 源码分叉。既有 LuJie Agent 继续执行原有工具调用流程，没有被整体迁移到 Codex。这样可以独立测试新引擎，再决定哪些任务值得迁移。
+Codex 有两个边界明确的入口：`src/lib/career/codex.ts` 保留单次 SDK 证据复盘；`src/lib/runtime/codex-app-server.ts` 为证据支撑的 JD 定制提供 stdio JSON-RPC 适配层。`src/lib/tasks/` 拥有任务、职业工具与提案校验。没有分叉 Codex 内核。既有 LuJie 聊天和其他 AI 页面继续执行原流程，未整套迁移；本阶段按用户决定暂不运行新旧效果对比。
 
-官方资料将非交互任务、程序化 SDK 工作流和有持久会话 / 事件 / 审批需求的 app-server 区分开。当前单次复盘选择 SDK；商业版需要长任务、断线恢复和审批事件时再引入 app-server。参考 [Codex 平台说明](https://developers.openai.com/blog/codex-as-a-platform)、[SDK](https://developers.openai.com/codex/sdk/) 与 [app-server](https://developers.openai.com/codex/app-server/)。
+单次复盘选择 SDK；当前 JD 定制已引入 app-server，由独立 worker 持有进程和任务生命周期。网页通过数据库任务状态轮询恢复视图，不向浏览器暴露 app-server 或 MCP。进程级中断不会自动恢复或重放模型轮次；用户可查看状态后重新创建任务。参考 [Codex 平台说明](https://developers.openai.com/blog/codex-as-a-platform)、[SDK](https://developers.openai.com/codex/sdk/) 与 [app-server](https://learn.chatgpt.com/docs/app-server)。
+
+## 证据支撑的 JD 简历定制
+
+详见 [配置、状态与验收](CODEX_TASKS.md)。`CareerTask` 存储输入快照、幂等 requestId、状态、revision、提案摘要 hash、结果版本 ID、运行时版本、线程/轮次 ID 和用量。`CareerTaskSource` 保存来源依赖；`CareerTaskEvent` 保存受控进度文本；`CareerWorker` 保存心跳。全部仍为本机单用户数据。
+
+MCP 工具只开放 `read_resume`、`read_job`、`read_evidence`、`read_career_memory` 和 `submit_tailoring_proposal`，不包含保存工具。每次调用检查任务状态与材料当前版本、确认、许可和记忆有效期。运行时不会继承开发者凭证或全局 MCP；每个任务使用独立临时工作区、CODEX_HOME 和回环 MCP 令牌，结束即清理。当前实现不持久复用 Codex 会话文件，任务与提案由应用数据库持有。
+
+模型只能提出已有非空文本字段的替换，不能改身份字段、增删经历条目、改技能条目或直接执行数据库操作。每项包含 before / after / reason 与引用 ID、来源类型和逐字摘录；程序拒绝无效路径、重复修改、原文不匹配、虚构摘录、错误类型和引用/原文中不存在的阿拉伯数字。程序不能证明自然语言语义蕴含、个人贡献或真实性，仍需用户逐项核对。
+
+生成完成前和确认保存时重新检查完整来源快照。确认请求绑定 revision 和提案 digest；事务内创建新版本并记录回执，重复确认返回同一版本。证据或记忆修正/删除立即使关联任务失效；简历、岗位变化和记忆自然过期在再次读取工具、发布、查看及保存时检出。已由用户保存的简历保留，任务标记依据已变化，不自动覆盖用户内容。任务快照与历史提案不会因原证据删除而自动抹除，仍需后续定义完整保留/删除策略。
+
+worker 使用原子状态竞争和租约；取消后不发布迟到结果。超过租约的执行标记失败，不自动重放可能收费的推理。记录模型报告的 token 用量与耗时，费用字段保持 null，尚未配置计价/账单核对。测试使用合成资料、假执行器及真实 MCP 传输，无真实服务质量、耗时或价格结论。
 
 ## 新增实体
 
@@ -47,7 +68,7 @@ Codex 接入目前集中在 `src/lib/career/codex.ts`：通过官方 TypeScript 
 
 v0.1 的证据覆盖按规范化后的标签精确关联，没有采用“JD 全文含某词就匹配”的方式；结果列出材料 ID 和下一步。别名表有限，复杂技能同义词、技能层级、经验年限与硬性门槛需要下一版扩充。整体岗位适合度继续依托上游 JD 工作流，新增模块只计算证据标签覆盖。
 
-## Codex 执行边界
+## SDK 证据复盘执行边界
 
 只在用户点击深度复盘且配置完整时运行。每次调用建立独立临时工作目录和运行时目录，SDK 子进程仅获得必要 PATH、专用运行时目录和本次模型凭证，不继承 GitHub PAT、开发者登录或全局 MCP 配置。
 
@@ -81,7 +102,7 @@ SDK 结果提供 token usage，目前只返回本次结果，没有持久化计�
 
 ## 商业版演进
 
-业务事实由应用数据库持有，运行时会话保存的是任务状态。未来切换 Codex app-server、其他模型或恢复一个任务时，都重新按用户身份构建上下文，不能把模型会话 ID 当作数据访问权限。
+业务事实由应用数据库持有，运行时会话保存的是任务状态。当前 app-server 与未来其他模型的接入都需按用户身份构建上下文，不能把模型会话 ID 当作数据访问权限。
 
 先为全部新旧实体加入 User / Workspace 所有权和可测试的租户访问层，再迁移 PostgreSQL；对象存储保存带 hash 与版本的材料，关系表保存 claim → evidence span → artifact revision 的关联。向量检索在需要时作为派生索引加入，不能取代原始事实库。
 

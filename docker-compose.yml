@@ -11,6 +11,9 @@ services:
       LUJIE_SETTINGS_SECRET: ${LUJIE_SETTINGS_SECRET:?Run npm run setup first}
       OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.deepseek.com/v1}
       OPENAI_MODEL: ${OPENAI_MODEL:-deepseek-flash}
+      TRACEFOLIO_CODEX_API_KEY: ${TRACEFOLIO_CODEX_API_KEY:-}
+      TRACEFOLIO_CODEX_MODEL: ${TRACEFOLIO_CODEX_MODEL:-}
+      TRACEFOLIO_CODEX_BASE_URL: ${TRACEFOLIO_CODEX_BASE_URL:-}
     volumes:
       - tracefolio-data:/data
     restart: unless-stopped

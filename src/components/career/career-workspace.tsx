@@ -32,14 +32,16 @@ import {
 } from "@/lib/career/domain";
 import type { CareerReview } from "@/lib/career/codex";
 import type { NavKey } from "@/lib/navigation";
+import { EvidenceTailoring } from "./evidence-tailoring";
 
-type Tab = "overview" | "memory" | "evidence" | "growth";
+type Tab = "overview" | "memory" | "evidence" | "tailoring" | "growth";
 type WorkspaceData = CareerState & { codexAvailable: boolean };
 type Save = (url: string, body: unknown, method?: string) => Promise<boolean>;
 const tabs: Array<[Tab, string]> = [
   ["overview", "能力地图"],
   ["memory", "职业记忆"],
   ["evidence", "能力证据"],
+  ["tailoring", "证据定制"],
   ["growth", "成长计划"],
 ];
 const categories = {
@@ -104,7 +106,11 @@ export function CareerWorkspace({
     let active = true;
     requestJson("/api/career")
       .then((value) => {
-        if (active) setData(value);
+        if (active) {
+          setData(value);
+          const query = new URLSearchParams(window.location.search);
+          if (query.has("task") || query.get("tab") === "tailoring") setTab("tailoring");
+        }
       })
       .catch((cause) => {
         if (active) setError(cause.message);
@@ -325,6 +331,7 @@ export function CareerWorkspace({
           role="tabpanel"
           aria-labelledby={`career-tab-${tab}`}
         >
+          {tab === "tailoring" && <EvidenceTailoring />}
           {tab === "overview" && (
             <div className="space-y-6">
               <div className="grid gap-4 sm:grid-cols-3">
@@ -536,9 +543,9 @@ export function CareerWorkspace({
                       </button>
                       <button
                         className={`${quietButton} w-full justify-between`}
-                        onClick={() => onNavigate("match")}
+                        onClick={() => setTab("tailoring")}
                       >
-                        定制岗位简历
+                        用证据定制简历
                         <ArrowRight size={15} />
                       </button>
                       <button

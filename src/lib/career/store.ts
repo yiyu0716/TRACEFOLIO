@@ -1,5 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { invalidateSourceTasks } from "@/lib/tasks/invalidation";
 import {
   buildCareerGrounding,
   canCompleteAction,
@@ -65,6 +66,7 @@ export async function saveMemory(
       });
       if (!changed.count)
         throw new CareerError("记忆已被修改或删除，请刷新后重试。", 409);
+      await invalidateSourceTasks(tx, "memory", id);
       return toMemory(
         await tx.careerMemory.findUniqueOrThrow({ where: { id } }),
       );
@@ -94,6 +96,7 @@ export async function saveEvidence(
     });
     if (!changed.count)
       throw new CareerError("证据已被修改或删除，请刷新后重试。", 409);
+    await invalidateSourceTasks(tx, "evidence", id);
     // Editing the basis of a completed action invalidates its old completion.
     await tx.growthAction.updateMany({
       where: { completionEvidenceId: id },
@@ -117,6 +120,7 @@ export async function deleteCareerRecord(
       });
       if (!current)
         throw new CareerError("证据已被修改或删除，请刷新后重试。", 409);
+      await invalidateSourceTasks(tx, "evidence", id);
       await tx.growthAction.updateMany({
         where: { completionEvidenceId: id },
         data: { status: "open", completionEvidenceId: null },
@@ -128,6 +132,7 @@ export async function deleteCareerRecord(
       });
       if (!removed.count)
         throw new CareerError("记忆已被修改或删除，请刷新后重试。", 409);
+      await invalidateSourceTasks(tx, "memory", id);
     }
   });
 }

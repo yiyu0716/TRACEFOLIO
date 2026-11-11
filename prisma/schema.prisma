@@ -1,4 +1,4 @@
-// Modified for TRACEFOLIO (2026): career memory, evidence and growth records.
+// Modified for TRACEFOLIO (2026): career records and durable evidence-tailoring tasks.
 generator client {
   provider = "prisma-client-js"
 }
@@ -211,4 +211,63 @@ model GrowthAction {
 
   @@unique([skill, title])
   @@index([status, updatedAt])
+}
+
+// Local single-user task queue. All entities require ownership before SaaS use.
+model CareerTask {
+  id              String   @id @default(cuid())
+  requestId       String   @unique
+  kind            String   @default("jd_tailoring")
+  status          String   @default("queued")
+  revision        Int      @default(1)
+  input           Json
+  inputHash       String
+  proposal        Json?
+  approvalDigest  String?
+  resultVersionId String?
+  runtimeThreadId String?
+  runtimeTurnId   String?
+  runtimeVersion  String?
+  model           String?
+  metrics         Json?
+  error           String?
+  workerId        String?
+  leaseUntil      DateTime?
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  sources CareerTaskSource[]
+  events  CareerTaskEvent[]
+
+  @@index([status, createdAt])
+}
+
+model CareerTaskSource {
+  id         String @id @default(cuid())
+  taskId     String
+  task       CareerTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  kind       String
+  sourceId   String
+  token      String
+
+  @@unique([taskId, kind, sourceId])
+  @@index([kind, sourceId])
+}
+
+model CareerTaskEvent {
+  id        Int      @id @default(autoincrement())
+  taskId    String
+  task      CareerTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  kind      String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@index([taskId, id])
+}
+
+model CareerWorker {
+  id          String   @id
+  heartbeatAt DateTime @default(now())
 }
