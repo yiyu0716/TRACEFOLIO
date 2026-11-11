@@ -143,6 +143,14 @@ describe("durable tailoring workflow", () => {
     expect((another.input as unknown as import("./domain").TaskSnapshot).memories).toEqual([]);
   });
 
+  it("does not send queued materials to a changed model connection",async()=>{
+    const {runtimeBinding}=await import("@/lib/runtime/config");
+    const task=await store.createTailoringTask(await seed(),db,runtimeBinding(config));
+    const execute=vi.fn(fakeExecutor);
+    await worker.executeNextTask({workerId:"worker",config:{...config,apiKey:"another-account"},signal:new AbortController().signal,db,execute});
+    expect(execute).not.toHaveBeenCalled();expect((await db.careerTask.findUniqueOrThrow({where:{id:task.id}})).status).toBe("failed");
+  });
+
   it("provides bounded task APIs with origin checks, explicit confirmation and redacted configuration", async () => {
     const request = await seed();
     vi.stubEnv("TRACEFOLIO_CODEX_API_KEY", "fake-private-test-key"); vi.stubEnv("TRACEFOLIO_CODEX_MODEL", "fake-model");
@@ -154,7 +162,7 @@ describe("durable tailoring workflow", () => {
     expect((await route.POST(post(request))).status).toBe(202);
     const listing = await route.GET(); expect(listing.headers.get("cache-control")).toBe("no-store");
     const text = await listing.text(); expect(text).not.toContain("fake-private-test-key"); expect(text).toContain('"runtimeAvailable":true');
-    await worker.executeNextTask({ workerId: "worker", config, signal: new AbortController().signal, db, execute: fakeExecutor });
+    await worker.executeNextTask({ workerId: "worker", config:{...config,apiKey:"fake-private-test-key"}, signal: new AbortController().signal, db, execute: fakeExecutor });
     const task = await db.careerTask.findFirstOrThrow();
     const approve = await import("@/app/api/career/tasks/[id]/approve/route");
     const result = await approve.POST(post({ revision: task.revision, digest: task.approvalDigest, confirmed: true }), { params: Promise.resolve({ id: task.id }) });

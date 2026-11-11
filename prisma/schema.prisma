@@ -229,6 +229,7 @@ model CareerTask {
   runtimeTurnId   String?
   runtimeVersion  String?
   model           String?
+  modelBinding    String?
   metrics         Json?
   error           String?
   workerId        String?
@@ -270,4 +271,26 @@ model CareerTaskEvent {
 model CareerWorker {
   id          String   @id
   heartbeatAt DateTime @default(now())
+}
+
+// Device-local connections. Tokens never enter the cloud's career/document tables.
+model ModelProfile {
+  id         String   @id @default(cuid())
+  label      String
+  kind       String   @default("byok")
+  providerId String
+  model      String
+  baseUrl    String
+  protocol   String
+  secret     String   @default("")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model LocalConnection {
+  id              String   @id @default("singleton")
+  activeProfileId String?
+  cloudBaseUrl    String   @default("")
+  cloudSession    String   @default("")
+  updatedAt       DateTime @updatedAt
 }

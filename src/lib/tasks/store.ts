@@ -46,7 +46,7 @@ export async function assertSnapshotCurrent(tx: Prisma.TransactionClient, snapsh
   if (digest(snapshotSources(current)) !== digest(snapshotSources(snapshot))) throw new SourceChanged();
 }
 
-export async function createTailoringTask(raw: unknown, db: PrismaClient = prisma) {
+export async function createTailoringTask(raw: unknown, db: PrismaClient = prisma, modelBinding?:string) {
   const parsed = createTaskSchema.parse(raw);
   const request = { resumeVersionId: parsed.resumeVersionId, jobId: parsed.jobId, evidenceIds: [...new Set(parsed.evidenceIds)].sort(), includeMemories: parsed.includeMemories };
   return db.$transaction(async (tx) => {
@@ -61,6 +61,7 @@ export async function createTailoringTask(raw: unknown, db: PrismaClient = prism
     if (JSON.stringify(modelInput).length > 70_000) throw new CareerError("所选材料过长，请减少证据数量或缩短摘录。");
     const task = await tx.careerTask.create({ data: {
       requestId: parsed.requestId, input: asJson(snapshot), inputHash: digest(snapshot),
+      modelBinding,
       sources: { create: snapshotSources(snapshot) },
       events: { create: { kind: "queued", message: "任务已排队，等待生成修改提案。" } },
     } });

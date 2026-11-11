@@ -26,6 +26,9 @@
 
 ## TRACEFOLIO 修改清单
 
+- v0.2 新增 `desktop/`、安装包构建 CI、本机服务访问令牌与系统保护的设备密钥；`src/lib/connections/`、设置界面、设备本地模型连接表和单次模型协议适配器；任务绑定已确认的模型连接。
+- 新增独立 `services/cloud/`：Fastify、PostgreSQL、账号所有权、Agent 月 / 年 / 永久权益、平台模型额度与幂等用量账本、加密的私有 WebDAV 资料存储。没有复制 OpenList 源码，也没有将旧职业 API 暴露为多用户服务。套餐尚未接入支付商户，ChatGPT 商业订阅接入等待官方资格。
+
 - 新增 `src/lib/career/`、`src/components/career/`、`src/app/api/career/`、职业数据迁移和文档。
 - 新增 `src/lib/tasks/`、`src/lib/runtime/codex-app-server.ts`、任务 API / 提案界面和持久化队列；固定 Codex CLI 和 MCP SDK；独立 worker 随开发/生产启动；Docker 同步支持。职业记忆与证据修改/删除使任务来源失效。
 - package 身份、版本、启动脚本、类型检查、Node.js 要求、Codex 固定依赖与锁文件。

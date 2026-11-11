@@ -1,6 +1,6 @@
 {
   "name": "tracefolio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "tracefolioUpstreamNotice": "Adapted from LuJie CareerKit 1aa4d01447d706617f2f9399fa5389cd2461abf3; see NOTICE and docs/UPSTREAM.md.",
   "private": true,
   "scripts": {
@@ -16,7 +16,12 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "setup": "node scripts/setup.mjs",
-    "db:migrate": "node scripts/migrate.mjs"
+    "db:migrate": "node scripts/migrate.mjs",
+    "desktop:prepare": "node scripts/prepare-desktop.mjs",
+    "desktop:dev": "npm run build && npm run desktop:prepare && electron .",
+    "desktop:pack": "npm run build && npm run desktop:prepare && electron-builder --config desktop/electron-builder.yml --publish never",
+    "cloud:dev": "npm --prefix services/cloud run dev",
+    "cloud:typecheck": "npm --prefix services/cloud run typecheck"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.118",
@@ -68,6 +73,9 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/word-extractor": "^1.0.6",
+    "electron": "^45.3.0",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "shadcn": "^4.10.0",
@@ -77,5 +85,9 @@
   },
   "engines": {
     "node": ">=22"
-  }
+  },
+  "main": "desktop/main.cjs",
+  "description": "Evidence-backed career workspace and Codex desktop agent",
+  "author": "TRACEFOLIO contributors",
+  "license": "Apache-2.0"
 }

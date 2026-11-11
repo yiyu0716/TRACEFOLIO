@@ -5,6 +5,7 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  { files: ["desktop/*.cjs"], rules: { "@typescript-eslint/no-require-imports": "off" } },
   {
     files: [
       "src/components/editor/**/*.{ts,tsx}",
@@ -42,6 +43,7 @@ const eslintConfig = defineConfig([
     "data/campus/**",
     "outputs/**",
     ".codex-logs/**",
+    ".desktop/**",
     "next-env.d.ts",
   ]),
 ]);

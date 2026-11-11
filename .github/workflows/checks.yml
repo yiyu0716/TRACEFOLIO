@@ -15,9 +15,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm ci --prefix services/cloud
       - run: npm run setup
       - run: npm run lint
       - run: npm run typecheck
+      - run: npm run cloud:typecheck
       - run: npm test
       - run: npm run runtime:check
       - run: npm run build

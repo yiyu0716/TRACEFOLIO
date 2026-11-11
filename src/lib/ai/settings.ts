@@ -1,3 +1,4 @@
+// Modified for TRACEFOLIO (2026): selectable protocol and model credential source.
 import { z } from "zod";
 
 import {
@@ -47,6 +48,8 @@ export type RedactedAiSettings = {
 };
 
 export type EffectiveAiSettings = {
+  protocol?: "responses" | "chat_completions";
+  source?: "byok" | "platform";
   provider: ReturnType<typeof getAiProvider>;
   providerId: string;
   model: string;

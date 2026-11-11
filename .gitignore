@@ -20,6 +20,13 @@
 
 # production
 /build
+/.desktop/
+/outputs/
+**/.cloud-data/
+**/node_modules/
+**/.env
+**/.env.*
+!**/.env.example
 
 # misc
 .DS_Store

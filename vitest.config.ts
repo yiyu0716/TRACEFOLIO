@@ -5,7 +5,7 @@ import { configDefaults, defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     env: { LUJIE_SETTINGS_SECRET: "tracefolio-unit-test-key-00000000000000000000" },
-    exclude: [...configDefaults.exclude, "tmp/**", "outputs/**", "src-tauri/**"],
+    exclude: [...configDefaults.exclude, "tmp/**", "outputs/**", ".desktop/**", "src-tauri/**"],
   },
   resolve: {
     alias: {

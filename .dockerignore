@@ -2,6 +2,10 @@
 .github
 .next
 node_modules
+**/node_modules
+.desktop
+**/.cloud-data
+**/.env
 coverage
 out
 build

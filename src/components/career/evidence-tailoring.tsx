@@ -122,7 +122,7 @@ export function EvidenceTailoring() {
     </div>
     {error && <p role="alert" className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-800">{error}</p>}
     {!options ? <p className="flex items-center gap-2 py-8 text-sm text-muted-foreground"><Loader2 size={16} className="animate-spin" />正在加载简历与岗位…</p> : <>
-      {!options.runtimeAvailable && <p className="rounded-xl border border-line bg-surface-low p-4 text-sm leading-6">尚未连接 Codex 任务模型。完成运行说明中的模型配置后，即可开始生成。</p>}
+      {!options.runtimeAvailable && <p className="rounded-xl border border-line bg-surface-low p-4 text-sm leading-6">尚未连接 Codex 任务模型。请在设置页添加并选择模型连接，再开始生成。</p>}
       {options.runtimeAvailable && !options.workerOnline && <p className="rounded-xl border border-line bg-surface-low p-4 text-sm leading-6">任务执行服务暂未连接。已有提案仍可查看，排队任务会在服务恢复后继续。</p>}
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
         <div className="space-y-5">

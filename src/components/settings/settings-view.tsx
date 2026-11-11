@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { AiSettingsPanel } from "@/components/settings/ai-settings-panel";
+// Modified for TRACEFOLIO (2026): model profiles, account plans and cloud materials.
+import { ConnectionsPanel } from "@/components/settings/connections-panel";
 import { Button } from "@/components/ui/button";
 import type { RedactedAiSettings } from "@/lib/ai/settings";
 import type { InitialData } from "@/components/app/types";
@@ -62,19 +64,29 @@ export function SettingsView({
 
   return (
     <div className="flex max-w-6xl flex-col gap-4">
-      <AiSettingsPanel
-        key={settings?.updatedAt ?? "empty-ai-settings"}
-        settings={aiSettings}
-        agentAssistantVisible={agentAssistantVisible}
-        onSettingsChange={onAiSettingsChange}
-        onAgentAssistantVisibleChange={onAgentAssistantVisibleChange}
-        onStatus={onStatus}
-      />
+      <ConnectionsPanel />
+      <details className="rounded-lg border border-line bg-surface p-4">
+        <summary className="cursor-pointer text-sm font-medium">
+          原有模型设置（未选择上方连接时生效）
+        </summary>
+        <div className="mt-4">
+          <AiSettingsPanel
+            key={settings?.updatedAt ?? "empty-ai-settings"}
+            settings={aiSettings}
+            agentAssistantVisible={agentAssistantVisible}
+            onSettingsChange={onAiSettingsChange}
+            onAgentAssistantVisibleChange={onAgentAssistantVisibleChange}
+            onStatus={onStatus}
+          />
+        </div>
+      </details>
       <section className="rounded-lg border border-line bg-surface p-5 shadow-[0_18px_50px_rgba(49,48,48,0.05)]">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h3 className="text-base font-semibold">{t("localDataTitle")}</h3>
-            <p className="mt-1 max-w-2xl text-sm leading-6 text-muted-foreground">{t("localDataDescription")}</p>
+            <p className="mt-1 max-w-2xl text-sm leading-6 text-muted-foreground">
+              {t("localDataDescription")}
+            </p>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
             <Button
