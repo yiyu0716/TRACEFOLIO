@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronRight, FileSearch, FileStack, FileText, FolderOpen, MessagesSquare, Pencil, RefreshCw, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -41,7 +43,7 @@ const libraryCategoryIcons = {
   interview: MessagesSquare,
 } as const;
 
-const libraryChartColors = ["#7F9CBF", "#9CB69C", "#C3B1D0"];
+const libraryChartColors = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)"];
 
 export function CareerLibraryWorkspace({
   data,
@@ -117,7 +119,7 @@ export function CareerLibraryWorkspace({
           </button>
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <h1 className="truncate font-serif text-lg font-semibold text-primary sm:text-xl">{title}</h1>
+              <h1 className="truncate font-serif text-lg font-semibold text-foreground sm:text-xl">{title}</h1>
               {directArtifact ? <Badge variant="secondary">{t(`kinds.${directArtifact.kind}`)}</Badge> : null}
             </div>
             <p className="mt-0.5 text-xs text-muted-foreground">{t("updatedAt", { date: formatDate(updatedAt) })}</p>
@@ -513,7 +515,7 @@ function JobOverview({
     >
       <section className="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm">
         <header className="border-b border-line px-5 py-4 sm:px-6">
-          <h3 className="text-base font-semibold text-primary">{t("overviewPathTitle")}</h3>
+          <h3 className="text-base font-semibold text-foreground">{t("overviewPathTitle")}</h3>
           <p className="mt-1 text-sm text-muted-foreground">{t("overviewPathDescription")}</p>
         </header>
         <div className="grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -535,7 +537,7 @@ function JobOverview({
                     {t("categoryCount", { count: artifacts.length })}
                   </span>
                 </span>
-                <span className="mt-5 block font-semibold text-primary">{t(`categories.${key}`)}</span>
+                <span className="mt-5 block font-semibold text-foreground">{t(`categories.${key}`)}</span>
                 <span className="mt-1.5 block text-sm leading-6 text-muted-foreground">
                   {t(`overviewPath.${key}`)}
                 </span>
@@ -555,7 +557,7 @@ function JobOverview({
       <section>
         <header className="mb-3 flex items-end justify-between gap-4">
           <div>
-            <h3 className="text-base font-semibold text-primary">{t("jobFilesTitle")}</h3>
+            <h3 className="text-base font-semibold text-foreground">{t("jobFilesTitle")}</h3>
             <p className="mt-1 text-sm text-muted-foreground">{t("jobFilesDescription")}</p>
           </div>
           <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
@@ -585,7 +587,7 @@ function JobOverview({
 
       <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm sm:p-6">
         <header>
-          <h3 className="text-base font-semibold text-primary">{t("overviewCompositionTitle")}</h3>
+          <h3 className="text-base font-semibold text-foreground">{t("overviewCompositionTitle")}</h3>
           <p className="mt-1 text-sm leading-6 text-muted-foreground">{t("overviewCompositionDescription")}</p>
         </header>
         <div className="mt-5 grid items-center gap-5 md:grid-cols-[minmax(17rem,1fr)_minmax(16rem,0.8fr)] md:gap-10">
@@ -613,11 +615,11 @@ function JobOverview({
                     <Cell key={item.key} fill={`url(#library-composition-${item.key})`} />
                   ))}
                 </Pie>
-                <RechartsTooltip contentStyle={{ borderRadius: 8, border: "1px solid #E5DDD0", fontSize: 12 }} />
+                <RechartsTooltip contentStyle={{ borderRadius: 8, border: "1px solid var(--border)", background: "var(--surface)", color: "var(--foreground)", fontSize: 12 }} />
               </PieChart>
             </ResponsiveContainer>
             <div className="pointer-events-none absolute inset-0 grid place-content-center text-center">
-              <strong className="font-serif text-4xl font-normal tabular-nums text-primary">{chartTotal}</strong>
+              <strong className="font-serif text-4xl font-normal tabular-nums text-foreground">{chartTotal}</strong>
               <span className="mt-1 text-xs text-muted-foreground">{t("overviewCompositionTitle")}</span>
             </div>
           </div>
@@ -966,13 +968,13 @@ function EditIconButton({ label, onClick, className }: { label: string; onClick:
 }
 
 function ContentPage({ title, description, actions, children }: { title: string; description?: string; actions?: React.ReactNode; children: React.ReactNode }) {
-  return <article><header className="flex items-start justify-between gap-4 border-b border-line pb-6"><div className="min-w-0"><h2 className="font-serif text-3xl font-semibold text-primary">{title}</h2>{description ? <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">{description}</p> : null}</div>{actions}</header><div className="mt-7 space-y-7">{children}</div></article>;
+  return <article><header className="flex items-start justify-between gap-4 border-b border-line pb-6"><div className="min-w-0"><h2 className="font-serif text-3xl font-semibold text-foreground">{title}</h2>{description ? <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">{description}</p> : null}</div>{actions}</header><div className="mt-7 space-y-7">{children}</div></article>;
 }
 function ContentSection({ title, children }: { title: string; children: React.ReactNode }) {
-  return <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm"><h3 className="mb-3 text-base font-semibold text-primary">{title}</h3><div className="text-sm leading-7 text-foreground/85">{children}</div></section>;
+  return <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm"><h3 className="mb-3 text-base font-semibold text-foreground">{title}</h3><div className="text-sm leading-7 text-foreground/85">{children}</div></section>;
 }
 function MetricCard({ value, label }: { value: number; label: string }) {
-  return <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm"><p className="font-serif text-3xl font-semibold text-primary">{value}</p><p className="mt-1 text-xs text-muted-foreground">{label}</p></div>;
+  return <div className="rounded-2xl border border-line bg-surface p-5 shadow-sm"><p className="font-serif text-3xl font-semibold text-foreground">{value}</p><p className="mt-1 text-xs text-muted-foreground">{label}</p></div>;
 }
 function TextPage({ title, text, preserve = false }: { title: string; text: string; preserve?: boolean }) {
   return <ContentPage title={title}><div className={cn("rounded-2xl border border-line bg-surface p-6 text-sm leading-7", preserve && "whitespace-pre-wrap")}>{text}</div></ContentPage>;
@@ -996,7 +998,7 @@ function ResumeDocument({ content }: { content: ResumeContent }) {
 function ResumeSectionPanel({ title, content, sectionId, emphasized = false }: { title: string; content: ResumeContent; sectionId: string; emphasized?: boolean }) {
   const value = resumeSectionLines(content, sectionId);
   if (!value.length) return null;
-  return <section className={cn("rounded-xl border border-line p-4", emphasized && "border-primary/25 bg-primary/[0.025]")}><h3 className="mb-3 font-semibold text-primary">{title}</h3><div className="space-y-2 text-sm leading-6">{value.map((line, index) => <p key={`${line}:${index}`} className="whitespace-pre-wrap">{line}</p>)}</div></section>;
+  return <section className={cn("rounded-xl border border-line p-4", emphasized && "border-primary/25 bg-primary/[0.025]")}><h3 className="mb-3 font-semibold text-foreground">{title}</h3><div className="space-y-2 text-sm leading-6">{value.map((line, index) => <p key={`${line}:${index}`} className="whitespace-pre-wrap">{line}</p>)}</div></section>;
 }
 
 function resumeSectionLines(content: ResumeContent, sectionId: string): string[] {

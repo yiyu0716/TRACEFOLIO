@@ -23,14 +23,14 @@ export function AppSidebar({
   return (
     <aside
       className={cn(
-        "no-print fixed inset-y-0 left-0 z-30 hidden w-72 flex-col border-r border-line bg-surface-low px-4 py-6 lg:flex",
+        "no-print fixed inset-y-0 left-0 z-30 hidden w-72 flex-col border-r border-sidebar-border bg-sidebar px-4 py-6 lg:flex",
         hidden && "lg:hidden",
       )}
     >
       <div className="mb-8 flex flex-col items-center">
         <div className="flex items-center justify-center gap-3">
           <Image src="/brand/tracefolio-mark.svg" alt="" width={44} height={44} className="shrink-0" priority />
-          <p className="font-sans text-xl font-semibold leading-none tracking-wider text-primary">{t("brandName")}</p>
+          <p className="font-sans text-xl font-semibold leading-none tracking-wider text-foreground">{t("brandName")}</p>
         </div>
         <p className="mt-2 text-[0.625rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
           CAREER INTELLIGENCE
@@ -52,8 +52,8 @@ export function AppSidebar({
                   className={cn(
                     "flex h-11 items-center gap-3 rounded-lg px-3 text-left text-sm font-medium transition",
                     active === item.key
-                      ? "bg-surface-high text-primary shadow-[inset_0_0_0_1px_var(--border)]"
-                      : "text-foreground/80 hover:bg-surface-mid hover:text-foreground",
+                      ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-[inset_0_0_0_1px_var(--border)]"
+                      : "text-sidebar-foreground hover:bg-surface-mid hover:text-foreground",
                   )}
                 >
                   <Icon className="h-5 w-5" />

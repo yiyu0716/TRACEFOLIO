@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 import type { ComponentProps, ComponentType, FormEvent, ReactNode } from "react";
 import { useMemo, useState } from "react";
 import {
@@ -468,19 +470,19 @@ function PipelineOverview({ overview }: { overview: ReturnType<typeof buildPipel
                     );
                   })}
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5DDD0" />
-                <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fontSize: 13, fill: "#4A3F35" }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
+                <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fontSize: 13, fill: "var(--muted-foreground)" }} />
                 <YAxis
                   allowDecimals={false}
                   domain={[0, (dataMax: number) => Math.max(4, dataMax)]}
                   tickCount={5}
                   tickLine={false}
                   axisLine={false}
-                  tick={{ fontSize: 13, fill: "#4A3F35" }}
+                  tick={{ fontSize: 13, fill: "var(--muted-foreground)" }}
                 />
                 <RechartsTooltip
-                  cursor={{ fill: "rgba(156, 182, 156, 0.12)" }}
-                  contentStyle={{ borderRadius: 8, border: "1px solid #E5DDD0", fontSize: 12 }}
+                  cursor={{ fill: "var(--brand-muted)" }}
+                  contentStyle={{ borderRadius: 8, border: "1px solid var(--border)", background: "var(--surface)", color: "var(--foreground)", fontSize: 12 }}
                 />
                 <Bar dataKey="count" radius={[8, 8, 0, 0]} name={t("overview.jobCount")}>
                   {overview.statusCounts.map((entry) => (
@@ -540,7 +542,7 @@ function PipelineOverview({ overview }: { overview: ReturnType<typeof buildPipel
                     })}
                   </Pie>
                   <RechartsTooltip
-                    contentStyle={{ borderRadius: 8, border: "1px solid #E5DDD0", fontSize: 12 }}
+                    contentStyle={{ borderRadius: 8, border: "1px solid var(--border)", background: "var(--surface)", color: "var(--foreground)", fontSize: 12 }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -723,7 +725,7 @@ function AddApplicationForm({
           className="min-h-28 resize-y bg-surface-low text-sm leading-6"
         />
       </FormField>
-      <button type="submit" className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white">
+      <button type="submit" className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground">
         <Plus className="h-4 w-4" />
         {t("add.submit")}
       </button>
@@ -1034,7 +1036,7 @@ function PipelineEditDialogContent({
               >
                 {t("edit.cancel")}
               </button>
-              <button type="submit" className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white">
+              <button type="submit" className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
                 {t("edit.save")}
               </button>
             </div>

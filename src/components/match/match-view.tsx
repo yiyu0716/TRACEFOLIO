@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 import type { FormEvent } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Edit3, FileCheck2, ListChecks, Target, WandSparkles } from "lucide-react";
@@ -440,7 +442,7 @@ export function MatchView({
                 {resumeSource === "library" && selectedLibraryKey ? <button type="button" onClick={() => onOpenResume(selectedLibraryKey === "main" ? undefined : selectedLibraryKey)} className="ml-2 font-medium text-primary hover:text-primary/80">{t("edit")}</button> : null}
               </p>
               <div className="flex gap-3">
-                <button type="submit" disabled={!canOptimize} className={cn("flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white", !canOptimize && "cursor-not-allowed opacity-55")} title={canOptimize ? undefined : resumeReady ? t("status.needJd") : t("status.needResume")}>
+                <button type="submit" disabled={!canOptimize} className={cn("flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground", !canOptimize && "cursor-not-allowed opacity-55")} title={canOptimize ? undefined : resumeReady ? t("status.needJd") : t("status.needResume")}>
                   <WandSparkles className="h-4 w-4" />{isGenerating ? t("generatingButton") : t("startButton")}
                 </button>
               </div>

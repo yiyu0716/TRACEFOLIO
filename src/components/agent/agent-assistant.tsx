@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 // Modified for TRACEFOLIO (2026): keep the assistant hint inside narrow viewports.
 
 import Image from "next/image";
@@ -354,7 +356,7 @@ export function AgentAssistant({
             onClickCapture={suppressPanelClickAfterDrag}
             style={{ touchAction: maximized ? "auto" : "none" }}
             className={cn(
-              "flex h-14 shrink-0 items-center gap-2 border-b bg-[#f7f5f3] px-3",
+              "flex h-14 shrink-0 items-center gap-2 border-b bg-surface-low px-3",
               maximized ? "cursor-default" : dragSource === "panel" ? "cursor-grabbing" : "cursor-grab",
             )}
           >
@@ -483,12 +485,12 @@ export function AgentAssistant({
           onPointerCancel={finishGroupDrag}
           style={{ touchAction: "none" }}
           className={cn(
-            "lujie-agent-pet-trigger group/pet absolute right-0 bottom-0 h-[75px] w-[82px] border-0 bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4",
+            "lujie-agent-pet-trigger group/pet absolute right-0 bottom-0 h-[75px] w-[82px] border-0 bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4",
             dragSource === "pet" ? "cursor-grabbing" : "cursor-grab",
           )}
         >
           {!open ? (
-            <span style={petPosition.right < 180 ? { right: 0 } : { left: 0 }} className="pointer-events-none absolute bottom-[calc(100%+5px)] w-max max-w-56 translate-y-1 whitespace-normal rounded-2xl border border-black/10 bg-background px-3 py-1.5 text-xs font-medium text-foreground opacity-0 shadow-[0_8px_24px_rgba(49,48,48,0.10)] transition-[opacity,transform] duration-200 ease-out group-hover/pet:translate-y-0 group-hover/pet:opacity-100 group-focus-visible/pet:translate-y-0 group-focus-visible/pet:opacity-100">
+            <span style={petPosition.right < 180 ? { right: 0 } : { left: 0 }} className="pointer-events-none absolute bottom-[calc(100%+5px)] w-max max-w-56 translate-y-1 whitespace-normal rounded-2xl border border-line bg-surface px-3 py-1.5 text-xs font-medium text-foreground opacity-0 shadow-[0_8px_24px_rgba(49,48,48,0.10)] transition-[opacity,transform] duration-200 ease-out group-hover/pet:translate-y-0 group-hover/pet:opacity-100 group-focus-visible/pet:translate-y-0 group-focus-visible/pet:opacity-100">
               {t("petHint")}
             </span>
           ) : null}
@@ -506,7 +508,7 @@ export function AgentAssistant({
           aria-label={t("hide")}
           title={t("hide")}
           onClick={onHide}
-          className="absolute right-0 top-0 grid h-6 w-6 place-items-center rounded-full border border-black/10 bg-background text-muted-foreground opacity-0 shadow-[0_5px_16px_rgba(49,48,48,0.10)] transition hover:bg-surface-low hover:text-foreground group-hover/assistant:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+          className="absolute right-0 top-0 grid h-6 w-6 place-items-center rounded-full border border-line bg-surface text-muted-foreground opacity-0 shadow-[0_5px_16px_rgba(49,48,48,0.10)] transition hover:bg-surface-low hover:text-foreground group-hover/assistant:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <X className="size-3.5" />
         </button>
@@ -522,16 +524,16 @@ function AgentPetVisual() {
       aria-hidden="true"
       className="h-[75px] w-[82px] overflow-visible drop-shadow-[0_8px_8px_rgba(0,0,0,0.16)]"
     >
-      <path d="M25 28C25 17 34 10 45 10h31l20 20v48c0 15-12 24-29 24H48c-17 0-28-9-28-24V39c0-4 2-8 5-11Z" fill="#fff" stroke="#191919" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M76 10v16c0 7 5 11 12 11h8" fill="#f4f1ef" stroke="#191919" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M19 53c-8 1-11 8-8 14 2 4 6 5 10 4" fill="none" stroke="#191919" strokeWidth="4" strokeLinecap="round" />
-      <path className="lujie-agent-pet-wave-arm" d="M97 54c9 0 13 7 10 14-2 4-6 6-10 4" fill="none" stroke="#191919" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="48" cy="53" r="3.2" fill="#191919" />
-      <circle cx="72" cy="53" r="3.2" fill="#191919" />
-      <path d="M55 64c3 3 7 3 10 0" fill="none" stroke="#191919" strokeWidth="3.5" strokeLinecap="round" />
-      <path d="M43 78h34" stroke="#f59e0b" strokeWidth="5" strokeLinecap="round" />
-      <path d="M48 87h24" stroke="#13a06f" strokeWidth="5" strokeLinecap="round" />
-      <path d="M38 101c3-5 9-6 14-2M68 99c5-3 11-2 14 2" fill="none" stroke="#191919" strokeWidth="4" strokeLinecap="round" />
+      <path d="M25 28C25 17 34 10 45 10h31l20 20v48c0 15-12 24-29 24H48c-17 0-28-9-28-24V39c0-4 2-8 5-11Z" fill="var(--surface)" stroke="var(--foreground)" strokeWidth="4" strokeLinejoin="round" />
+      <path d="M76 10v16c0 7 5 11 12 11h8" fill="var(--brand-muted)" stroke="var(--foreground)" strokeWidth="4" strokeLinejoin="round" />
+      <path d="M19 53c-8 1-11 8-8 14 2 4 6 5 10 4" fill="none" stroke="var(--foreground)" strokeWidth="4" strokeLinecap="round" />
+      <path className="lujie-agent-pet-wave-arm" d="M97 54c9 0 13 7 10 14-2 4-6 6-10 4" fill="none" stroke="var(--foreground)" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="48" cy="53" r="3.2" fill="var(--foreground)" />
+      <circle cx="72" cy="53" r="3.2" fill="var(--foreground)" />
+      <path d="M55 64c3 3 7 3 10 0" fill="none" stroke="var(--foreground)" strokeWidth="3.5" strokeLinecap="round" />
+      <path d="M43 78h34" stroke="var(--brand)" strokeWidth="5" strokeLinecap="round" />
+      <path d="M48 87h24" stroke="var(--chart-3)" strokeWidth="5" strokeLinecap="round" />
+      <path d="M38 101c3-5 9-6 14-2M68 99c5-3 11-2 14 2" fill="none" stroke="var(--foreground)" strokeWidth="4" strokeLinecap="round" />
     </svg>
   );
 }
@@ -642,7 +644,7 @@ function AgentConversation({
       <ScrollArea className="min-h-0 flex-1">
         <div className="space-y-4 px-4 py-4">
           {messages.length === 0 ? (
-            <div className="rounded-xl border bg-[#faf9f8] p-4">
+            <div className="rounded-xl border bg-surface-low p-4">
               <div className="flex items-center gap-2 font-semibold">
                 <FileText className="size-4" />
                 {t("welcome.title")}
@@ -789,7 +791,7 @@ function AgentConversation({
       </ScrollArea>
 
       <div className="shrink-0 border-t bg-background p-3">
-        <div className="flex items-end gap-2 rounded-xl border bg-[#faf9f8] p-2 focus-within:border-black/30 focus-within:ring-2 focus-within:ring-black/5">
+        <div className="flex items-end gap-2 rounded-xl border bg-surface-low p-2 focus-within:border-brand/40 focus-within:ring-2 focus-within:ring-brand/10">
           <SpeechTextarea
             value={input}
             onValueChange={setInput}
@@ -805,7 +807,7 @@ function AgentConversation({
             rows={1}
             placeholder={t("inputPlaceholder")}
             wrapperClassName="min-w-0 flex-1"
-            speechButtonClassName="top-1 right-0 border-0 bg-transparent shadow-none hover:bg-black/5"
+            speechButtonClassName="top-1 right-0 border-0 bg-transparent shadow-none hover:bg-brand/5"
             className="max-h-28 min-h-9 resize-none border-0 bg-transparent py-1.5 pl-1 shadow-none focus-visible:ring-0"
           />
           {busy ? (
@@ -924,7 +926,7 @@ function JdOptimizationConfiguration({
     "highlightMatchedSkills",
   ];
   return (
-    <div className="rounded-xl border bg-[#faf9f8] p-3 text-foreground">
+    <div className="rounded-xl border bg-surface-low p-3 text-foreground">
       <p className="font-semibold">{t("configuration.jdTitle")}</p>
       <p className="mt-1 text-xs text-muted-foreground">{input.resumeName} → {input.jobName}</p>
       <p className="mt-2 text-xs leading-5 text-muted-foreground">{input.reason}</p>
@@ -998,7 +1000,7 @@ function InterviewConfiguration({
 
   const modes: InterviewMode[] = ["comprehensive", "project", "behavioral", "hr"];
   return (
-    <div className="rounded-xl border bg-[#faf9f8] p-3 text-foreground">
+    <div className="rounded-xl border bg-surface-low p-3 text-foreground">
       <p className="font-semibold">
         {input.task === "simulation" ? t("configuration.simulationTitle") : t("configuration.preparationTitle")}
       </p>

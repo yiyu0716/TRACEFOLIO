@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
@@ -998,17 +1000,17 @@ export function PreparationScreen({
             <div className="h-[22rem] w-full">
               <ResponsiveContainer width="100%" height="100%" minWidth={220}>
                 <RadarChart data={capabilityData} margin={{ top: 24, right: 40, bottom: 24, left: 40 }}>
-                  <PolarGrid stroke="#D8DDE5" />
-                  <PolarAngleAxis dataKey="label" tick={{ fill: "#4B5563", fontSize: 12 }} />
-                  <RechartsTooltip contentStyle={{ borderRadius: 8, border: "1px solid #D8DDE5", fontSize: 12 }} />
-                  <Radar name={t("preparation.jdRequirement")} dataKey="requirement" stroke="#315F92" fill="#315F92" fillOpacity={0.18} strokeWidth={2} />
-                  <Radar name={t("preparation.resumeEvidenceLevel")} dataKey="evidence" stroke="#7A9B7A" fill="#9CB69C" fillOpacity={0.28} strokeWidth={2} />
+                  <PolarGrid stroke="var(--border)" />
+                  <PolarAngleAxis dataKey="label" tick={{ fill: "var(--muted-foreground)", fontSize: 12 }} />
+                  <RechartsTooltip contentStyle={{ borderRadius: 8, border: "1px solid var(--border)", background: "var(--surface)", color: "var(--foreground)", fontSize: 12 }} />
+                  <Radar name={t("preparation.jdRequirement")} dataKey="requirement" stroke="var(--chart-1)" fill="var(--chart-1)" fillOpacity={0.18} strokeWidth={2} />
+                  <Radar name={t("preparation.resumeEvidenceLevel")} dataKey="evidence" stroke="var(--chart-2)" fill="var(--chart-2)" fillOpacity={0.28} strokeWidth={2} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
             <div className="flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
-              <span className="flex items-center gap-2"><span className="size-2.5 rounded-full bg-[#315F92]" />{t("preparation.jdRequirement")}</span>
-              <span className="flex items-center gap-2"><span className="size-2.5 rounded-full bg-[#9CB69C]" />{t("preparation.resumeEvidenceLevel")}</span>
+              <span className="flex items-center gap-2"><span className="size-2.5 rounded-full bg-chart-1" />{t("preparation.jdRequirement")}</span>
+              <span className="flex items-center gap-2"><span className="size-2.5 rounded-full bg-chart-2" />{t("preparation.resumeEvidenceLevel")}</span>
             </div>
             <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-5 text-muted-foreground">{t("preparation.capabilityNote")}</p>
           </div>

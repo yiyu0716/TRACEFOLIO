@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 // Modified for TRACEFOLIO (2026): product identity and navigation.
 
 import type { Dispatch, SetStateAction } from "react";
@@ -43,7 +45,7 @@ export function AppTopbar({
   return (
     <header
       className={cn(
-        "no-print sticky top-0 z-20 border-b border-line bg-background/85 px-4 py-3 backdrop-blur lg:ml-72 lg:px-8",
+        "no-print sticky top-0 z-20 border-b border-line bg-surface/85 px-4 py-3 backdrop-blur lg:ml-72 lg:px-8",
         hidden && "hidden",
       )}
     >
@@ -51,7 +53,7 @@ export function AppTopbar({
         <div className="flex items-center gap-3 lg:hidden">
           <div className="flex items-center gap-2">
             <Image src="/brand/tracefolio-mark.svg" alt="" width={28} height={28} className="shrink-0" priority />
-            <span className="hidden font-sans text-base font-semibold text-primary sm:inline">{t("brandName")}</span>
+            <span className="hidden font-sans text-base font-semibold text-foreground sm:inline">{t("brandName")}</span>
           </div>
           <select
             data-tour-mobile-nav
@@ -67,7 +69,7 @@ export function AppTopbar({
           </select>
         </div>
         <div className="hidden h-10 w-72 lg:block" aria-hidden />
-        <div className="relative flex items-center gap-2 text-primary">
+        <div className="relative flex items-center gap-2 text-foreground">
           <LanguageSwitcher compact />
           <div className="hidden sm:block">
             <HeaderIconButton label={t("topbar.guide")} active={false} onClick={onStartTour}>
@@ -100,7 +102,7 @@ export function AppTopbar({
             type="button"
             onClick={() => setHeaderMenu((current) => (current === "profile" ? null : "profile"))}
             className={cn(
-              "grid h-8 w-8 place-items-center rounded-full bg-primary text-sm font-semibold text-white transition hover:bg-primary/90",
+              "grid h-8 w-8 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground transition hover:bg-brand-hover",
               headerMenu === "profile" && "ring-2 ring-primary/20",
             )}
             aria-label={t("topbar.profile")}

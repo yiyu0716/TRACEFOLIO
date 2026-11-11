@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 import type { ReactNode } from "react";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -88,7 +90,7 @@ export function HeaderMenuPanel({
           <button
             type="button"
             onClick={() => onNavigate("pipeline")}
-            className="w-full rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white"
+            className="w-full rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground"
           >
             {t("openPipeline")}
           </button>
@@ -114,7 +116,7 @@ export function HeaderMenuPanel({
           <button
             type="button"
             onClick={() => onNavigate("dashboard")}
-            className="w-full rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white"
+            className="w-full rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground"
           >
             {t("backDashboard")}
           </button>

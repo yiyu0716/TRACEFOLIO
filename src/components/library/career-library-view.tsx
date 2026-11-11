@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 import { useMemo, useState } from "react";
 import { FolderKanban, FolderOpen, Pencil, Search, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -70,7 +72,7 @@ export function CareerLibraryView({
     <section className="pb-12">
       <div className="flex flex-col gap-6 border-b border-line pb-7 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="font-serif text-3xl font-semibold tracking-normal text-primary">{t("title")}</h1>
+          <h1 className="font-serif text-3xl font-semibold tracking-normal text-foreground">{t("title")}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {t("summary", { jobs: archives.length, artifacts: generatedCount })}
           </p>
@@ -126,7 +128,7 @@ export function CareerLibraryView({
           {companyGroups.map((company) => (
             <section key={company.id}>
               <div className="mb-4 flex items-baseline gap-3 border-b border-line pb-3">
-                <h2 className="font-serif text-2xl font-semibold text-primary">{company.name}</h2>
+                <h2 className="font-serif text-2xl font-semibold text-foreground">{company.name}</h2>
                 <span className="text-sm text-muted-foreground">
                   {t("jobCount", { count: company.archives.length })}
                 </span>
@@ -158,7 +160,7 @@ export function CareerLibraryView({
             return (
               <section key={category}>
                 <div className="mb-4 flex items-center gap-3">
-                  <h2 className="font-serif text-2xl font-semibold text-primary">{t(`categories.${category}`)}</h2>
+                  <h2 className="font-serif text-2xl font-semibold text-foreground">{t(`categories.${category}`)}</h2>
                   <span className="text-sm text-muted-foreground">{t("count", { count: items.length })}</span>
                 </div>
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -277,7 +279,7 @@ function LibraryCard({
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             {isSample ? <Badge variant="outline" className="mb-2">{t("sampleJob")}</Badge> : null}
-            <h3 className="line-clamp-2 font-serif text-xl font-semibold leading-7 text-primary">{title}</h3>
+            <h3 className="line-clamp-2 font-serif text-xl font-semibold leading-7 text-foreground">{title}</h3>
             {subtitle ? <p className="mt-1.5 line-clamp-1 text-sm text-muted-foreground">{subtitle}</p> : null}
           </div>
           <div className="pointer-events-none relative z-10 flex shrink-0 items-center gap-2">

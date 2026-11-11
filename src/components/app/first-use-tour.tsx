@@ -1,5 +1,7 @@
 "use client";
 
+// Modified for TRACEFOLIO (2026): shared cool-gray / mist-blue application palette.
+
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -170,7 +172,7 @@ export function FirstUseTour({
                 {t("progress", { current: stepIndex, total: steps.length - 1 })}
               </p>
             ) : null}
-            <h2 id="first-use-tour-title" className={cn("whitespace-pre-line font-serif text-2xl font-semibold leading-8 text-primary", isWelcome ? "px-8" : "mt-3 pr-8")}>
+            <h2 id="first-use-tour-title" className={cn("whitespace-pre-line font-serif text-2xl font-semibold leading-8 text-foreground", isWelcome ? "px-8" : "mt-3 pr-8")}>
               {t(`steps.${current.id}.title`)}
             </h2>
             <p id="first-use-tour-description" className="mt-3 text-sm leading-6 text-muted-foreground">

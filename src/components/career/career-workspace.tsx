@@ -55,11 +55,11 @@ const sources = {
   interview: "面试记录",
 };
 const fieldClass =
-  "w-full rounded-xl border border-line bg-white px-3 py-2.5 text-sm outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/10";
+  "w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/10";
 const buttonClass =
-  "inline-flex items-center justify-center gap-2 rounded-xl bg-[#163d37] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#24584e] disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-medium text-primary-foreground transition hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-50";
 const quietButton =
-  "inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-white px-3 py-2 text-sm transition hover:bg-surface-low disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-surface px-3 py-2 text-sm transition hover:bg-surface-low disabled:opacity-50";
 
 async function requestJson(url: string, body?: unknown, method = "GET") {
   const response = await fetch(url, {
@@ -229,23 +229,23 @@ export function CareerWorkspace({
 
   return (
     <div className="space-y-6 pb-16">
-      <section className="relative overflow-hidden rounded-3xl bg-[#163d37] p-6 text-white lg:p-8">
+      <section className="relative overflow-hidden rounded-3xl bg-hero p-6 text-hero-foreground lg:p-8">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-10 -top-28 h-80 w-80 rounded-full border-[36px] border-white/5"
+          className="pointer-events-none absolute -right-10 -top-28 h-80 w-80 rounded-full border-[36px] border-hero-ring"
         />
         <div className="relative flex flex-wrap items-start justify-between gap-5">
           <div className="max-w-xl">
-            <p className="mb-4 flex items-center gap-2 text-xs font-medium tracking-[0.18em] text-emerald-200">
+            <p className="mb-4 flex items-center gap-2 text-xs font-medium tracking-[0.18em] text-hero-detail">
               <Fingerprint size={16} /> YOUR CAREER, WITH EVIDENCE
             </p>
             <h2 className="text-2xl font-semibold leading-snug lg:text-3xl">
               让每一份能力，都有迹可循。
             </h2>
-            <p className="mt-3 max-w-lg text-sm leading-7 text-emerald-50/75">
+            <p className="mt-3 max-w-lg text-sm leading-7 text-hero-muted">
               记住你的目标和选择，把做过的事变成能讲清、可追溯的证据。让下一份简历、下一场面试，都建立在真实积累之上。
             </p>
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs text-emerald-100/70">
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs text-hero-muted">
               <span>01 记住你</span>
               <span>02 找到证据</span>
               <span>03 对齐岗位</span>
@@ -253,7 +253,7 @@ export function CareerWorkspace({
             </div>
           </div>
           <button
-            className="inline-flex items-center gap-2 rounded-xl border border-white/25 px-4 py-2.5 text-sm hover:bg-white/10 disabled:opacity-40"
+            className="inline-flex items-center gap-2 rounded-xl border border-hero-border px-4 py-2.5 text-sm hover:bg-primary-soft disabled:opacity-40"
             disabled={!data}
             onClick={exportProfile}
           >
@@ -280,7 +280,7 @@ export function CareerWorkspace({
               setError("");
               setMessage("");
             }}
-            className={`shrink-0 border-b-2 px-5 py-3 text-sm font-medium ${tab === key ? "border-[#276c59] text-[#276c59]" : "border-transparent text-muted-foreground hover:text-foreground"}`}
+            className={`shrink-0 border-b-2 px-5 py-3 text-sm font-medium ${tab === key ? "border-brand text-brand" : "border-transparent text-muted-foreground hover:text-foreground"}`}
           >
             {label}
           </button>
@@ -414,17 +414,17 @@ export function CareerWorkspace({
                   </form>
                   {match && (
                     <div className="mt-5 space-y-4" aria-live="polite">
-                      <div className="flex flex-wrap gap-4 rounded-xl bg-[#f1f6f3] p-4">
+                      <div className="flex flex-wrap gap-4 rounded-xl bg-brand-muted p-4">
                         <div>
-                          <strong className="text-2xl text-[#276c59]">
+                          <strong className="text-2xl text-brand-foreground">
                             {match.coveragePercent}%
                           </strong>
                           <p className="mt-1 text-xs text-muted-foreground">
                             有已确认材料的技能标签
                           </p>
                         </div>
-                        <div className="border-l border-emerald-900/10 pl-4">
-                          <strong className="text-2xl text-[#276c59]">
+                        <div className="border-l border-hero-border pl-4">
+                          <strong className="text-2xl text-brand-foreground">
                             {match.artifactCoveragePercent}%
                           </strong>
                           <p className="mt-1 text-xs text-muted-foreground">
@@ -462,7 +462,7 @@ export function CareerWorkspace({
                                     setEditingEvidence(item);
                                     setTab("evidence");
                                   }}
-                                  className="mt-2 block text-left text-xs leading-5 text-[#276c59] underline underline-offset-4"
+                                  className="mt-2 block text-left text-xs leading-5 text-brand underline underline-offset-4"
                                 >
                                   {item.title} · 查看来源与个人贡献
                                 </button>
@@ -554,7 +554,7 @@ export function CareerWorkspace({
                     title="由你决定，Agent 记住什么"
                     description="新记录默认仅保存在本机。只有已确认、未过期且允许用于 AI 的记录，才会进入后续 Agent 分析。"
                   >
-                    <p className="text-sm text-[#276c59]">
+                    <p className="text-sm text-brand-foreground">
                       当前有 {sharedCount} 条记录可用于 AI
                     </p>
                     <button
@@ -651,7 +651,7 @@ export function CareerWorkspace({
                 {data.memories.map((item) => (
                   <article
                     key={item.id}
-                    className="rounded-2xl border border-line bg-white p-5"
+                    className="rounded-2xl border border-line bg-surface p-5"
                   >
                     <div className="flex flex-wrap items-center gap-2">
                       <Badge>{categories[item.category]}</Badge>
@@ -719,7 +719,7 @@ export function CareerWorkspace({
                 {data.evidence.map((item) => (
                   <article
                     key={item.id}
-                    className="rounded-2xl border border-line bg-white p-5"
+                    className="rounded-2xl border border-line bg-surface p-5"
                   >
                     <div className="flex flex-wrap gap-2">
                       <Badge>{sources[item.sourceType]}</Badge>
@@ -772,8 +772,8 @@ export function CareerWorkspace({
 
           {tab === "growth" && (
             <div className="space-y-4">
-              <div className="rounded-2xl bg-[#f1f6f3] p-5">
-                <h3 className="font-semibold text-[#276c59]">
+              <div className="rounded-2xl bg-brand-muted p-5">
+                <h3 className="font-semibold text-brand-foreground">
                   从“还不会”走向“拿得出证据”
                 </h3>
                 <p className="mt-2 text-sm leading-7 text-muted-foreground">
@@ -884,7 +884,7 @@ function Panel({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-line bg-white p-5 lg:p-6">
+    <section className="rounded-2xl border border-line bg-surface p-5 lg:p-6">
       <h3 className="font-semibold tracking-tight">{title}</h3>
       {description && (
         <p className="mt-2 text-sm leading-7 text-muted-foreground">
@@ -911,11 +911,11 @@ function Metric({
   return (
     <button
       onClick={onClick}
-      className="rounded-2xl border border-line bg-white p-5 text-left transition hover:border-emerald-800/30"
+      className="rounded-2xl border border-line bg-surface p-5 text-left transition hover:border-brand/30"
     >
       <div className="flex items-center justify-between">
         <span className="text-xs text-muted-foreground">{label}</span>
-        <span className="text-[#276c59]">{icon}</span>
+        <span className="text-brand">{icon}</span>
       </div>
       <p className="mt-3 text-3xl font-semibold tracking-tight">
         {value}
@@ -929,7 +929,7 @@ function Metric({
 }
 function Badge({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex rounded-md bg-[#eef4f0] px-2 py-1 text-[11px] font-medium text-[#366655]">
+    <span className="inline-flex rounded-md bg-brand-muted px-2 py-1 text-[11px] font-medium text-brand-foreground">
       {children}
     </span>
   );
@@ -937,7 +937,7 @@ function Badge({ children }: { children: ReactNode }) {
 function Empty({ title, description }: { title: string; description: string }) {
   return (
     <div className="rounded-2xl border border-dashed border-line px-6 py-10">
-      <Fingerprint size={25} className="mb-4 text-[#4b7d6a]" />
+      <Fingerprint size={25} className="mb-4 text-brand" />
       <h3 className="font-medium">{title}</h3>
       <p className="mt-2 max-w-lg text-sm leading-7 text-muted-foreground">
         {description}
