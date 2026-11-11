@@ -305,6 +305,7 @@ export async function createCloudServer(options: Options) {
                 "top_p",
                 "store",
                 "prompt_cache_key",
+                "client_metadata",
               ]
             : [
                 "model",
@@ -416,6 +417,8 @@ export async function createCloudServer(options: Options) {
               }),
         };
         delete (upstreamBody as Record<string, unknown>).max_completion_tokens;
+        // Codex includes local client diagnostics; they are not provider instructions.
+        delete (upstreamBody as Record<string, unknown>).client_metadata;
         const serialized = JSON.stringify(upstreamBody);
         if (Buffer.byteLength(serialized) > model.maxRequestBytes)
           throw new CloudError("模型请求过长，请缩短材料。", 413);

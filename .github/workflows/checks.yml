@@ -22,4 +22,5 @@ jobs:
       - run: npm run cloud:typecheck
       - run: npm test
       - run: npm run runtime:check
+      - run: node scripts/smoke-platform.mjs
       - run: npm run build

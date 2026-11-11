@@ -13,11 +13,15 @@ const child = spawn(executable, [join(root, "runtime/desktop-server.mjs")], {
   cwd: root,
   env: {
     PATH: process.env.PATH,
-    ...Object.fromEntries(["SystemRoot","WINDIR","TEMP","TMP"].filter((key)=>process.env[key]).map((key)=>[key,process.env[key]])),
+    ...Object.fromEntries(
+      ["SystemRoot", "WINDIR", "TEMP", "TMP"]
+        .filter((key) => process.env[key])
+        .map((key) => [key, process.env[key]]),
+    ),
     NODE_ENV: "production",
     ELECTRON_RUN_AS_NODE: "1",
     TRACEFOLIO_DESKTOP_NODE: "1",
-    DATABASE_URL: `file:${join(data, "career.db").replace(/\\/g,"/")}`,
+    DATABASE_URL: `file:${join(data, "career.db").replace(/\\/g, "/")}`,
     LUJIE_SETTINGS_SECRET: randomBytes(32).toString("hex"),
     TRACEFOLIO_DESKTOP_TOKEN: token,
   },
@@ -68,6 +72,7 @@ try {
   assert.equal(tasks.status, 200);
   const state = await tasks.json();
   assert.equal(state.runtimeAvailable, false);
+  assert.equal(state.workerOnline, true);
   assert.equal(
     (
       await fetch(`${base}/api/connections`, {
