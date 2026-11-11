@@ -139,6 +139,6 @@ npm run admin -- reconcile-uploads
 
 自动化使用合成资料、内存 PostgreSQL 引擎 PGlite、假模型及假存储，测试账号隔离、会话过期、套餐权益、上传同意、资料修订、预留结算、幂等和 Codex 实际 CLI 与 MCP 传输。没有消耗真实付费模型额度。
 
-`node scripts/smoke-platform.mjs` 额外贯通真实 Codex CLI → 本机模型适配 → HTTP 云网关 → 账号权益与用量预留 → 合成模型 → MCP 提案的整条链路，核对 5 次模型调用分别结算一次。`node scripts/smoke-desktop.mjs` 检查桌面本机服务的迁移、渲染、令牌、跨站拒绝和 worker 心跳；可通过 `TRACEFOLIO_SMOKE_NODE` 指定打包后的 Electron 可执行文件，验证内置运行环境。
+`node scripts/smoke-platform.mjs` 额外贯通真实 Codex CLI → 本机模型适配 → HTTP 云网关 → 账号权益与用量预留 → 合成模型 → MCP 提案的整条链路，核对 5 次模型调用分别结算一次。`node scripts/smoke-desktop.mjs` 检查桌面本机服务的迁移、渲染、令牌、跨站拒绝和 worker 心跳。打包后运行 `node scripts/check-packaged-runtime.mjs`，使用安装资源内实际的 Electron 可执行文件与后端重跑检查；跨平台 CI 在上传安装包前执行同样验收。
 
 服务器、域名、模型服务配置、夸克桥接授权、支付商户、签名证书与 OpenAI 商业订阅接入资格尚需运营者提供。账号服务目前采用邮箱密码、可选邀请码与 30 天会话，没有邮件验证、密码重置、MFA、设备管理或完整审计；限流是单实例内存实现。这一版本可用于集成验证，不能称为已上线的生产 SaaS。

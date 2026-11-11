@@ -6,7 +6,9 @@ import { randomBytes } from "node:crypto";
 import assert from "node:assert/strict";
 
 const data = await mkdtemp(join(tmpdir(), "tracefolio-desktop-smoke-"));
-const root = resolve(".desktop/backend"),
+const root = resolve(
+    process.env.TRACEFOLIO_SMOKE_BACKEND ?? ".desktop/backend",
+  ),
   token = randomBytes(32).toString("hex");
 const executable = process.env.TRACEFOLIO_SMOKE_NODE ?? process.execPath;
 const child = spawn(executable, [join(root, "runtime/desktop-server.mjs")], {
@@ -101,10 +103,12 @@ try {
     "Desktop smoke passed: isolated DB, migrated backend, rendered UI, authenticated loopback, encrypted model profile.",
   );
 } finally {
-  const exited = new Promise((r) => child.once("exit", r));
-  child.kill("SIGTERM");
-  const timer = setTimeout(() => child.kill("SIGKILL"), 4000);
-  await exited;
-  clearTimeout(timer);
+  if(child.exitCode===null && child.signalCode===null) {
+    const exited = new Promise((r) => child.once("exit", r));
+    child.kill("SIGTERM");
+    const timer = setTimeout(() => child.kill("SIGKILL"), 4000);
+    await exited;
+    clearTimeout(timer);
+  }
   await rm(data, { recursive: true, force: true });
 }

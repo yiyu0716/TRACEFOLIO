@@ -11,8 +11,12 @@ files:
   - NOTICE
   - '!**/node_modules/**'
 extraResources:
-  - from: .desktop/backend
-    to: backend
+  # Copy from the parent: electron-builder excludes a source-root node_modules.
+  # Keeping backend/node_modules nested preserves the independent Node service.
+  - from: .desktop
+    to: .
+    filter:
+      - backend/**
   - from: third-party
     to: third-party
 npmRebuild: false
