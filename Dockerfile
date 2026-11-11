@@ -1,4 +1,4 @@
-# Modified for TRACEFOLIO (2026): Node 22, local preview and license distribution.
+# Modified for TRACEFOLIO (2026): Node 22 and separate app-server task worker.
 FROM node:22-bookworm-slim AS builder
 
 WORKDIR /app
@@ -37,9 +37,12 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/scripts/migrate.mjs ./scripts/migrate.mjs
+COPY --from=builder /app/scripts ./scripts
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/data/campus/current.json ./data/campus/current.json
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "node scripts/migrate.mjs && node_modules/.bin/next start --hostname 0.0.0.0"]
+ENV TRACEFOLIO_LISTEN_HOST=0.0.0.0
+CMD ["sh", "-c", "node scripts/migrate.mjs && node scripts/with-worker.mjs start"]

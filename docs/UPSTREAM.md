@@ -10,7 +10,7 @@
 | [Codex 官方源码](https://github.com/openai/codex) | GitHub API 与包内许可均显示 Apache-2.0 | 不分叉 Rust / CLI 核心；使用官方 SDK 依赖 |
 | [Codex SDK 文档](https://developers.openai.com/codex/sdk/) | 文档与安装包的 TypeScript 声明核对 startThread / run / env / outputSchema | 固定 `@openai/codex-sdk@0.167.1`，单次结构化证据复盘 |
 | [Codex 平台说明](https://developers.openai.com/blog/codex-as-a-platform) | 区分 exec、SDK 与 app-server 的集成定位 | 将运行时与应用事实库分开，避免先维护核心分叉 |
-| [app-server 文档](https://developers.openai.com/codex/app-server/) | 线程、轮次、流事件与审批生命周期 | 作为长任务阶段的集成依据，当前未实现应用内完整迁移 |
+| [app-server 文档](https://learn.chatgpt.com/docs/app-server) | 稳定 stdio 协议、线程/轮次事件与输出 schema；安装版 CLI 生成 schema 核对 | 已用于证据支撑的 JD 定制，未整体替换 LuJie 主聊天 |
 | [Codex 配置参考](https://developers.openai.com/codex/config-reference/) | shell_tool、view_image、apps 等开关 | 复盘封装禁用无关工具；不把该配置等同于多租户隔离 |
 | [OpenAI 服务地域列表](https://developers.openai.com/api/docs/supported-countries) | 模型服务与开源代码许可分别存在条件 | 商业部署前核对服务对象与供应商可用性，未承诺中国版默认可用 OpenAI |
 
@@ -27,6 +27,7 @@
 ## TRACEFOLIO 修改清单
 
 - 新增 `src/lib/career/`、`src/components/career/`、`src/app/api/career/`、职业数据迁移和文档。
+- 新增 `src/lib/tasks/`、`src/lib/runtime/codex-app-server.ts`、任务 API / 提案界面和持久化队列；固定 Codex CLI 和 MCP SDK；独立 worker 随开发/生产启动；Docker 同步支持。职业记忆与证据修改/删除使任务来源失效。
 - package 身份、版本、启动脚本、类型检查、Node.js 要求、Codex 固定依赖与锁文件。
 - `src/lib/navigation.ts`、应用导航和主工作台增加 `/intelligence`。
 - `src/app/page.tsx`、layout、sidebar、topbar、品牌 SVG 与语言文件改为 TRACEFOLIO 入口和身份。
