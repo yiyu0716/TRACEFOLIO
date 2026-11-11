@@ -20,10 +20,12 @@ const migrate = spawnSync(
 );
 if (migrate.status !== 0) throw new Error("Database migration failed");
 // The server's random port is not its access credential; every HTTP request is authenticated.
-const next = require("next");
 const nextConfig = require(
   join(root, ".next/required-server-files.json"),
 ).config;
+// Match Next's generated standalone entrypoint before loading its config module.
+process.env.__NEXT_PRIVATE_STANDALONE_CONFIG = JSON.stringify(nextConfig);
+const next = require("next");
 const nextApp = next({ dev: false, dir: root, conf: nextConfig });
 await nextApp.prepare();
 const handle = nextApp.getRequestHandler();

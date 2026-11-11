@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { dirname, join, relative, resolve, sep } from "node:path";
+import { createRequire } from "node:module";
 import { build } from "esbuild";
 
 const root = resolve("."),
@@ -40,6 +41,46 @@ for (const name of [
     recursive: true,
   });
 }
+// The Prisma CLI is invoked at first launch, outside Next's traced import graph.
+// Copy its full installed dependency closure, preserving hoisted/nested locations.
+const included = new Set();
+async function includePackage(packageJson) {
+  const source = dirname(packageJson);
+  if (included.has(source)) return;
+  included.add(source);
+  const location = relative(join(root, "node_modules"), source);
+  if (location.startsWith(`..${sep}`) || location === "..")
+    throw new Error("Desktop dependency escapes node_modules");
+  await cp(source, join(backend, "node_modules", location), {
+    recursive: true,
+  });
+  const manifest = JSON.parse(await readFile(packageJson, "utf8"));
+  const require = createRequire(packageJson);
+  for (const name of Object.keys(manifest.dependencies ?? {})) {
+    let dependency;
+    try {
+      dependency = require.resolve(`${name}/package.json`);
+    } catch {
+      let dir = dirname(require.resolve(name));
+      while (true) {
+        const candidate = join(dir, "package.json");
+        if (
+          existsSync(candidate) &&
+          JSON.parse(await readFile(candidate, "utf8")).name === name
+        ) {
+          dependency = candidate;
+          break;
+        }
+        const parent = dirname(dir);
+        if (parent === dir)
+          throw new Error(`Cannot resolve desktop dependency ${name}`);
+        dir = parent;
+      }
+    }
+    await includePackage(dependency);
+  }
+}
+await includePackage(join(root, "node_modules/prisma/package.json"));
 const target = process.env.TRACEFOLIO_DESKTOP_TARGET ?? process.platform;
 const arch = process.env.TRACEFOLIO_DESKTOP_ARCH ?? process.arch;
 const native =

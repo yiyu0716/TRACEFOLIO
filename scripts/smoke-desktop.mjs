@@ -1,4 +1,4 @@
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { mkdtemp, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { tmpdir } from "node:os";
@@ -11,6 +11,17 @@ const root = resolve(
   ),
   token = randomBytes(32).toString("hex");
 const executable = process.env.TRACEFOLIO_SMOKE_NODE ?? process.execPath;
+const native = spawnSync(
+  executable,
+  [join(root, "node_modules/@openai/codex/bin/codex.js"), "--version"],
+  {
+    cwd: root,
+    env: { ...process.env, ELECTRON_RUN_AS_NODE: "1" },
+    encoding: "utf8",
+  },
+);
+assert.equal(native.status, 0, "Packaged Codex runtime must execute");
+assert.match(native.stdout, /codex-cli 0\.167\.1/);
 const child = spawn(executable, [join(root, "runtime/desktop-server.mjs")], {
   cwd: root,
   env: {
@@ -100,10 +111,10 @@ try {
   ).text();
   assert(!check.includes("synthetic-private-key"));
   console.log(
-    "Desktop smoke passed: isolated DB, migrated backend, rendered UI, authenticated loopback, encrypted model profile.",
+    "Desktop smoke passed: native Codex, isolated DB, migrated backend, rendered UI, authenticated loopback, encrypted model profile.",
   );
 } finally {
-  if(child.exitCode===null && child.signalCode===null) {
+  if (child.exitCode === null && child.signalCode === null) {
     const exited = new Promise((r) => child.once("exit", r));
     child.kill("SIGTERM");
     const timer = setTimeout(() => child.kill("SIGKILL"), 4000);
