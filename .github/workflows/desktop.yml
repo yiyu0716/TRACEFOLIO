@@ -6,7 +6,7 @@ on:
     branches: ["codex/desktop-cloud-foundation"]
     paths:
       - "desktop/**"
-      - "scripts/*desktop*"
+      - "scripts/**"
       - "src/**"
       - "prisma/**"
       - "package*.json"

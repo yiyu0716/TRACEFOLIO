@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { createRequire } from "node:module";
@@ -109,6 +109,51 @@ await build({
     js: 'import { createRequire as __createRequire } from "node:module"; const require = __createRequire(import.meta.url);',
   },
 });
+// Traced modules and browser/worker bundles omit package-root license files.
+// Include installed dependency notices, including those compiled into bundles.
+const licenseRoot = join(backend, "third-party/package-licenses");
+const notices = [];
+async function includeNotices(modules) {
+  if (!existsSync(modules)) return;
+  for (const entry of await readdir(modules, { withFileTypes: true })) {
+    if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+    const packageDirs = entry.name.startsWith("@")
+      ? (await readdir(join(modules, entry.name), { withFileTypes: true }))
+          .filter((item) => item.isDirectory())
+          .map((item) => join(modules, entry.name, item.name))
+      : [join(modules, entry.name)];
+    for (const source of packageDirs) {
+      const manifestPath = join(source, "package.json");
+      if (!existsSync(manifestPath)) continue;
+      const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+      const location = relative(join(root, "node_modules"), source);
+      const files = (await readdir(source)).filter((name) =>
+        /^(?:licen[cs]es?|notice|copying|copyright)(?:[._-].*)?$/i.test(name),
+      );
+      for (const file of files) {
+        const destination = join(licenseRoot, location, file);
+        await mkdir(dirname(destination), { recursive: true });
+        await cp(join(source, file), destination, {
+          recursive: true,
+          dereference: true,
+        });
+      }
+      notices.push({
+        name: manifest.name,
+        version: manifest.version,
+        license: manifest.license ?? null,
+        location: location.split(sep).join("/"),
+        files,
+      });
+      await includeNotices(join(source, "node_modules"));
+    }
+  }
+}
+await includeNotices(join(root, "node_modules"));
+await writeFile(
+  join(backend, "third-party/dependencies.json"),
+  JSON.stringify(notices, null, 2),
+);
 const cloudUrl = process.env.TRACEFOLIO_DESKTOP_CLOUD_URL ?? "";
 if (cloudUrl) {
   const url = new URL(cloudUrl);
