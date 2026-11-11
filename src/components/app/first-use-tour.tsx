@@ -204,7 +204,7 @@ export function FirstUseTour({
                   }
                   else setStepIndex((index) => Math.min(steps.length - 1, index + 1));
                 }}
-                className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground hover:bg-primary/85"
+                className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground hover:bg-brand-hover"
               >
                 {isLast ? t("finish") : isWelcome ? t("start") : t("next")}
                 {isLast ? <Sparkles className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}

@@ -62,7 +62,7 @@ export function AppPageHeader({
             <button
               type="button"
               onClick={onAddApplication}
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-[0_10px_24px_rgba(49,48,48,0.12)] hover:bg-primary/90"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-[0_10px_24px_rgba(49,48,48,0.12)] hover:bg-brand-hover"
             >
               <Plus className="h-4 w-4" />
               {t("addApplication")}
