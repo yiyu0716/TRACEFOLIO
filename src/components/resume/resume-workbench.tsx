@@ -974,7 +974,8 @@ async function exportResume(resume: Resume, format: ResumeExportFormat) {
     return;
   }
 
-  downloadDataUrl(await combinePageImages(pages), `${buildExportName(resume)}.png`);
+  // Modified for TRACEFOLIO (2026): same-origin Blob downloads work in the desktop boundary.
+  downloadBlob(await combinePageImages(pages), `${buildExportName(resume)}.png`);
 }
 
 async function captureResumePages(resume: Resume, smartOnePage: boolean) {
@@ -1158,7 +1159,12 @@ async function combinePageImages(pages: Array<{ dataUrl: string; width: number; 
     offsetY += A4_HEIGHT_PX * layout.pageScale + layout.pageGap * layout.pageScale;
   }
 
-  return canvas.toDataURL("image/png", 1);
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (blob) resolve(blob);
+      else reject(new Error("无法生成图片导出文件。"));
+    }, "image/png", 1);
+  });
 }
 
 function loadImage(src: string) {

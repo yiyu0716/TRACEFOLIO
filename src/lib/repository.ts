@@ -15,6 +15,9 @@ import { DEFAULT_AI_MODEL, DEFAULT_AI_PROVIDER_ID, LEGACY_DEFAULT_AI_MODELS, get
 import { normalizeApplicationInterviewRound, resolveApplicationAppliedAt } from "./application";
 import { analyzeJobInput } from "./job-analysis";
 import { prisma } from "./db";
+// Modified for TRACEFOLIO (2026): device model profiles and account entitlements.
+import { activeAiConfig, redactedEffective } from "./connections/store";
+import { requireAgentAccess } from "./connections/cloud";
 import {
   interviewModeSchema,
   interviewReportSchema,
@@ -292,6 +295,7 @@ export async function getAppData() {
   const remainingVersions = primaryVersion
     ? versions.filter((version) => version.id !== primaryVersion.id)
     : versions;
+  const selectedAi = await activeAiConfig();
 
   return {
     resume: primaryVersion
@@ -344,7 +348,7 @@ export async function getAppData() {
     interviewPreparations: interviewPreparations.map(toInterviewPreparationRecord),
     settings: settings
       ? {
-          ai: redactAiSettings({
+          ai: selectedAi ? redactedEffective(selectedAi) : redactAiSettings({
             aiProvider: settings.aiProvider,
             aiModel: settings.aiModel,
             aiBaseUrl: settings.aiBaseUrl,
@@ -366,7 +370,7 @@ export async function getAiSettingsPayload() {
   if (!settings) throw new Error("Settings seed failed.");
 
   return {
-    settings: redactAiSettings(toStoredAiSettings(settings)),
+    settings: await activeAiConfig().then((active)=>active?redactedEffective(active):redactAiSettings(toStoredAiSettings(settings))),
     registry: AI_SETTINGS_REGISTRY,
   };
 }
@@ -405,6 +409,9 @@ export async function updateAiSettings(input: AiSettingsInput) {
 }
 
 export async function getEffectiveAiRuntimeSettings() {
+  await requireAgentAccess();
+  const active=await activeAiConfig();
+  if(active)return active;
   await ensureSeedData();
   const settings = await prisma.settings.findUnique({ where: { id: "singleton" } });
   if (!settings) throw new Error("Settings seed failed.");

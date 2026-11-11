@@ -119,6 +119,7 @@ export async function runCodexTailoring(input: {
     const provider = input.config.baseUrl ? [
       'model_provider = "tracefolio"', '[model_providers.tracefolio]', 'name = "TRACEFOLIO Responses"',
       `base_url = ${quote(input.config.baseUrl)}`, 'wire_api = "responses"', 'env_key = "CODEX_API_KEY"',
+      'request_max_retries = 0', 'stream_max_retries = 0',
     ] : [];
     const config = [
       `model = ${quote(input.config.model)}`, 'approval_policy = "never"', 'sandbox_mode = "read-only"', 'web_search = "disabled"', 'cli_auth_credentials_store = "file"',
@@ -133,6 +134,8 @@ export async function runCodexTailoring(input: {
     await input.onMeta?.({ runtimeVersion: command.version, model: input.config.model });
     rpc = new JsonRpcProcess(command, workspace, {
       PATH: process.env.PATH ?? "", NODE_ENV: "production", CODEX_HOME: home, CODEX_API_KEY: input.config.apiKey, TRACEFOLIO_TOOLS_TOKEN: input.tools.token,
+      ...(process.env.TRACEFOLIO_DESKTOP_NODE === "1" ? { ELECTRON_RUN_AS_NODE: "1", TRACEFOLIO_DESKTOP_NODE: "1" } : {}),
+      ...(process.platform === "win32" ? Object.fromEntries(["SystemRoot","WINDIR","TEMP","TMP"].filter((key)=>process.env[key]).map((key)=>[key,process.env[key]])) : {}),
     }, (message) => {
       const params = record(message.params);
       if (threadId && params.threadId !== threadId) return;

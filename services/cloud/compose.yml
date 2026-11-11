@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: tracefolio
+      POSTGRES_USER: tracefolio
+      POSTGRES_PASSWORD: ${TRACEFOLIO_POSTGRES_PASSWORD:?Set a random PostgreSQL password}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U tracefolio"]
+      interval: 5s
+      retries: 12
+    restart: unless-stopped
+  cloud:
+    build:
+      context: ../..
+      dockerfile: services/cloud/Dockerfile
+    env_file: .env
+    environment:
+      TRACEFOLIO_CLOUD_DATABASE_URL: postgresql://tracefolio:${TRACEFOLIO_POSTGRES_PASSWORD:?Set a random PostgreSQL password}@postgres:5432/tracefolio
+      TRACEFOLIO_CLOUD_HOST: 0.0.0.0
+    ports:
+      - 127.0.0.1:4310:4310
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  postgres-data:

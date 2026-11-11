@@ -1,0 +1,40 @@
+appId: com.tracefolio.desktop
+productName: TRACEFOLIO
+asar: true
+directories:
+  app: .desktop/app
+  output: outputs/desktop
+files:
+  - desktop/**
+  - package.json
+  - LICENSE
+  - NOTICE
+  - '!**/node_modules/**'
+extraResources:
+  # Copy from the parent: electron-builder excludes a source-root node_modules.
+  # Keeping backend/node_modules nested preserves the independent Node service.
+  - from: .desktop
+    to: .
+    filter:
+      - backend/**
+  - from: third-party
+    to: third-party
+npmRebuild: false
+mac:
+  icon: desktop/icon.png
+  category: public.app-category.productivity
+  target:
+    - dmg
+    - zip
+  hardenedRuntime: true
+win:
+  icon: desktop/icon.png
+  target:
+    - nsis
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  artifactName: TRACEFOLIO-${version}-Windows-${arch}-Setup.${ext}
+dmg:
+  artifactName: TRACEFOLIO-${version}-macOS-${arch}.${ext}
