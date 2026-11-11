@@ -1,0 +1,40 @@
+import type { ApplicationStatus } from "@prisma/client";
+import { z } from "zod";
+
+import { dateInputSchema, parseJsonRequest } from "@/lib/api-request";
+import { deleteApplication, updateApplication } from "@/lib/repository";
+
+const applicationSchema = z.object({
+  status: z
+    .enum(["APPLIED", "ASSESSMENT", "INTERVIEW", "OFFER", "REJECTED", "ARCHIVED"])
+    .optional(),
+  interviewRound: z.enum(["", "FIRST", "SECOND", "THIRD", "HR"]).optional(),
+  stageDate: dateInputSchema.nullable().optional(),
+  nextFollowUpAt: dateInputSchema.nullable().optional(),
+  notes: z.string().optional(),
+  resumeVersionId: z.string().nullable().optional(),
+});
+
+export async function PATCH(request: Request, context: RouteContext<"/api/applications/[id]">) {
+  const { id } = await context.params;
+  const parsed = await parseJsonRequest(request, applicationSchema);
+  if (!parsed.success) return parsed.response;
+  const input = parsed.data;
+  const application = await updateApplication({
+    id,
+    status: input.status as ApplicationStatus | undefined,
+    interviewRound: input.interviewRound,
+    stageDate: input.stageDate,
+    nextFollowUpAt: input.nextFollowUpAt,
+    notes: input.notes,
+    resumeVersionId: input.resumeVersionId,
+  });
+
+  return Response.json({ application });
+}
+
+export async function DELETE(_request: Request, context: RouteContext<"/api/applications/[id]">) {
+  const { id } = await context.params;
+  await deleteApplication(id);
+  return Response.json({ ok: true });
+}

@@ -1,0 +1,141 @@
+export type ApplicationStatus =
+  | "APPLIED"
+  | "ASSESSMENT"
+  | "INTERVIEW"
+  | "OFFER"
+  | "REJECTED"
+  | "ARCHIVED";
+
+export type InterviewRound = "" | "FIRST" | "SECOND" | "THIRD" | "HR";
+
+export type ResumeContent = {
+  editor?: ResumeEditorSettings;
+  basics: {
+    name: string;
+    email: string;
+    phone: string;
+    city: string;
+    links: string[];
+  };
+  profile: {
+    title: string;
+    summary: string;
+  };
+  education: Array<{
+    school: string;
+    degree: string;
+    major: string;
+    gpa?: string;
+    start: string;
+    end: string;
+    highlights: string[];
+  }>;
+  experiences: Array<{
+    company: string;
+    role: string;
+    logo?: string;
+    start: string;
+    end: string;
+    highlights: string[];
+  }>;
+  internships: Array<{
+    company: string;
+    role: string;
+    logo?: string;
+    start: string;
+    end: string;
+    highlights: string[];
+  }>;
+  projects: Array<{
+    name: string;
+    role: string;
+    logo?: string;
+    highlights: string[];
+  }>;
+  skills: string[];
+  awards: string[];
+  customSections?: Array<{
+    title: string;
+    content: string;
+  }>;
+  selfReview: string;
+};
+
+export type ResumeEditorSettings = {
+  displayName?: string;
+  template?: string;
+  themeConfig?: {
+    primaryColor?: string;
+    accentColor?: string;
+    fontFamily?: string;
+    fontSize?: string;
+    logoSize?: "small" | "medium" | "large";
+    lineSpacing?: number;
+    margin?: {
+      top?: number;
+      right?: number;
+      bottom?: number;
+      left?: number;
+    };
+    sectionSpacing?: number;
+    avatarStyle?: "circle" | "oneInch";
+  };
+  sections?: SerializedResumeSection[];
+};
+
+export type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
+
+export type SerializedResumeSection = {
+  id: string;
+  resumeId: string;
+  type: string;
+  title: string;
+  sortOrder: number;
+  visible: boolean;
+  content: JsonValue;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type JobAnalysis = {
+  company: string;
+  title: string;
+  deadline: string | null;
+  requirements: string[];
+  keywords: string[];
+  bonusPoints: string[];
+  risks: string[];
+  suggestions: string[];
+};
+
+export type ResumeOptimizationMeta = {
+  company: string;
+  title: string;
+  keywords: string[];
+  summary: string;
+  changes: string[];
+  versionName: string;
+};
+
+export type JobRecord = {
+  id: string;
+  company: string;
+  title: string;
+  city?: string;
+  source?: string;
+  link?: string;
+  deadline: string | null;
+  jd: string;
+};
+
+export type ApplicationRecord = {
+  id: string;
+  jobId: string;
+  status: ApplicationStatus;
+  interviewRound?: InterviewRound;
+  resumeVersionId: string | null;
+  appliedAt: string | null;
+  stageDate: string | null;
+  nextFollowUpAt: string | null;
+  notes: string;
+};

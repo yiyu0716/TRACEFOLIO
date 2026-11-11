@@ -1,0 +1,4 @@
+interface:
+  display_name: "模拟面试教练"
+  short_description: "开展岗位化模拟面试、动态追问并生成循证复盘与改进建议"
+  default_prompt: "使用 $mock-interview-coach 针对这个岗位和我的简历开始一轮模拟面试。"

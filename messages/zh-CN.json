@@ -1,0 +1,1724 @@
+{
+  "app": {
+    "brandName": "TRACEFOLIO",
+    "language": {
+      "label": "语言",
+      "zh-CN": "中文",
+      "en": "English"
+    },
+    "nav": {
+      "campus": "校招信息库",
+      "dashboard": "控制中心",
+      "resume": "简历编辑器",
+      "match": "JD匹配优化",
+      "interview": "面试助手",
+      "pipeline": "投递岗位跟进",
+      "library": "求职资料库",
+      "settings": "设置",
+      "intelligence": "职业智能"
+    },
+    "campus": {
+      "any": "不限",
+      "popularCities": "热门城市",
+      "pageNumber": "输入页码，按回车跳转",
+      "closeDetails": "关闭招聘详情",
+      "sortLabel": "更改排列方式",
+      "sort": {
+        "updated_desc": "更新时间：从新到旧",
+        "updated_asc": "更新时间：从旧到新",
+        "deadline_asc": "截止时间：从近到远",
+        "deadline_desc": "截止时间：从远到近",
+        "company_asc": "公司名称：按拼音"
+      },
+      "title": "校招信息库",
+      "subtitle": "找公司、看招聘方向，快速找到值得进一步了解的机会。",
+      "catalogCount": "{count, number} 条招聘信息",
+      "searchPlaceholder": "搜索公司、岗位或专业，多个关键词用空格分隔",
+      "clearSearch": "清空搜索",
+      "locationPlaceholder": "工作地点，如北京",
+      "moreFilters": "更多筛选",
+      "resetAdvanced": "重置这些条件",
+      "clearFilters": "清空筛选",
+      "removeFilter": "移除{filter}：{value}",
+      "filters": {
+        "q": "搜索招聘信息",
+        "recruitmentType": "招聘类型",
+        "target": "毕业届别",
+        "location": "工作地点",
+        "companyType": "企业性质不限",
+        "industry": "所属行业不限",
+        "exam": "笔试情况不限"
+      },
+      "fields": {
+        "q": "关键词",
+        "company": "公司 / 招聘类型",
+        "recruitmentType": "招聘类型",
+        "target": "招聘对象",
+        "location": "工作地点",
+        "companyType": "企业性质",
+        "industry": "所属行业",
+        "exam": "笔试情况",
+        "positions": "岗位与专业",
+        "deadline": "截止时间",
+        "updatedAt": "信息源更新时间"
+      },
+      "deadline": {
+        "dated": "按日期未截止",
+        "expired": "按日期已截止",
+        "unspecified": "无明确日期",
+        "invalid": "日期待核验",
+        "byDate": "以招聘公告为准"
+      },
+      "loading": "正在加载招聘信息…",
+      "loadFailed": "暂时无法读取招聘信息",
+      "loadFailedHint": "招聘信息读取失败，请稍后重试。",
+      "retry": "重新加载",
+      "resultCount": "找到 {count, number} 条信息",
+      "sortUpdated": "按原表更新时间排列",
+      "details": "详情",
+      "viewCompany": "查看{company}的招聘详情",
+      "notProvided": "未提供",
+      "updated": "更新于 {date}",
+      "pagination": "招聘信息分页",
+      "page": "第 {page} / {pages} 页",
+      "previous": "上一页",
+      "next": "下一页",
+      "noResults": "没有找到符合条件的信息",
+      "noResultsHint": "试试更短的关键词，或减少筛选条件。",
+      "noDataset": "暂无校招数据",
+      "noDatasetHint": "当前安装还没有可用的招聘信息数据。",
+      "recordNotFound": "这条招聘记录已不存在或暂不可用，可以在校招信息库中重新搜索。",
+      "source": "数据来源于公开网络信息，经收集、清洗与整理。",
+      "referenceNote": "信息仅供求职参考，可能存在错漏或更新延迟；",
+      "officialNote": "招聘要求、截止时间和投递方式请以招聘方官方公告为准。",
+      "freshnessNote": "信息仅供求职参考，可能存在错漏或更新延迟；招聘要求、截止时间和投递方式请以招聘方官方公告为准。",
+      "rightsNote": "如发现信息错误，或认为相关内容涉及侵权，请<contact>联系项目维护者</contact>，我们将核实并更正或删除。",
+      "originalDeadline": "原文：{value}",
+      "reviewNote": "信息待核验：{note}",
+      "openApplication": "打开投递入口",
+      "openNotice": "查看相关公告",
+      "noLinks": "暂无可用的投递或公告链接。"
+    },
+    "navGroups": {
+      "workflow": "求职流程",
+      "system": "系统"
+    },
+    "sidebar": {
+      "localMode": "本地模式",
+      "encrypted": "凭证本机加密 · 记忆由你掌控"
+    },
+    "topbar": {
+      "notifications": "跟进提醒",
+      "guide": "新手引导",
+      "profile": "本地账户"
+    },
+    "header": {
+      "processing": "正在处理...",
+      "addApplication": "新增投递岗位",
+      "optimizedVersions": "已优化版本 · {count}",
+      "optimizedVersionsHint": "选择一个历史优化结果继续查看",
+      "clearOptimizedVersions": "清空全部优化版本",
+      "interviewSessions": "已模拟面试 · {count}",
+      "interviewSessionsHint": "继续未完成练习，或查看已保存的复盘报告",
+      "clearInterviewSessions": "清空全部模拟面试",
+      "interviewRecords": "已生成资料 · {count}",
+      "interviewRecordsHint": "按简历查看已生成的复习资料、模拟面试与复盘",
+      "clearInterviewRecords": "清空全部面试资料",
+      "preparationRecord": "复习资料",
+      "interviewRecord": "模拟面试",
+      "completed": "已复盘",
+      "inProgress": "进行中",
+      "deleteOptimizedVersion": "删除优化版本",
+      "deleteInterview": "删除模拟面试",
+      "deleteInterviewPreparation": "删除复习资料"
+    },
+    "menu": {
+      "notifications": "跟进提醒",
+      "profile": "本地账户",
+      "close": "关闭菜单",
+      "unknownCompany": "未知公司",
+      "unknownTitle": "未知岗位",
+      "followUpDate": "跟进日期：{date}",
+      "noReminders": "暂无到期跟进岗位。",
+      "openPipeline": "查看投递跟进",
+      "followUpsDue": "跟进岗位",
+      "resumeVersions": "简历版本",
+      "mode": "模式：本地单用户",
+      "provider": "Provider：{provider}",
+      "backDashboard": "回到控制中心"
+    },
+    "pages": {
+      "resumeOptimizationTitle": "AI简历优化",
+      "resumeOptimizationSubtitle": "基于当前简历优化表达清晰度、信息密度和成果呈现，生成可继续编辑的专属版本。",
+      "matchSubtitle": "基于目标 JD 重新梳理简历重点，强化真实经历中的匹配证据，生成可继续编辑的专属版本。",
+      "pipelineSubtitle": "记录投递渠道、当前阶段、面试轮次和跟进日期，把每个岗位从投递到 Offer 的进展集中管理。",
+      "interviewSubtitle": "结合所选简历与目标岗位生成模拟问题，完成逐题练习后获得结构化反馈与复盘建议。",
+      "defaultSubtitle": "简历到 Offer 的校招实习工作台",
+      "intelligenceSubtitle": "从真实经历出发，建立属于你的职业记忆与能力证据。"
+    },
+    "dashboard": {
+      "metrics": {
+        "submitted": "投递岗位",
+        "active": "活跃流程",
+        "followUpsDue": "到期跟进",
+        "offers": "Offer"
+      },
+      "sections": {
+        "actions": "近期处理",
+        "quickStart": "快速开始",
+        "stages": "求职阶段"
+      },
+      "emptyActions": "为投递岗位设置阶段日期后，这里会显示最近需要处理的三项任务。",
+      "overdueSuffix": "（已到期）",
+      "quickActions": {
+        "resume": "编辑简历",
+        "match": "JD 匹配",
+        "pipeline": "新增投递",
+        "interview": "模拟面试"
+      },
+      "stages": {
+        "APPLIED": "已投递",
+        "ASSESSMENT": "笔试 / 测评",
+        "INTERVIEW": "面试中",
+        "OFFER": "Offer",
+        "REJECTED": "拒绝",
+        "ARCHIVED": "归档"
+      },
+      "actions": {
+        "READY": "完成 {company} · {title} 的岗位匹配",
+        "ASSESSMENT": "准备 {company} · {title} 的笔试 / 测评",
+        "INTERVIEW": "准备 {company} · {title} 面试",
+        "DEFAULT": "跟进 {company} · {title}"
+      },
+      "schedule": {
+        "stageDate": "阶段日期",
+        "deadline": "岗位截止日期",
+        "nextFollowUp": "下次跟进日期",
+        "suggestedFollowUp": "建议跟进日期",
+        "appliedAt": "投递日期",
+        "updatedAt": "最近更新"
+      }
+    },
+    "resumeLibrary": {
+      "title": "我的简历",
+      "count": "共 {count} 份简历 · {jobOptimizedCount} 份岗位优化版本 · {generalOptimizedCount} 份通用优化版本",
+      "importing": "解析中...",
+      "import": "导入简历",
+      "create": "新建简历",
+      "search": "搜索简历...",
+      "sortRecent": "最近编辑",
+      "sortRecentOptimized": "最近优化",
+      "gridView": "网格视图",
+      "listView": "列表视图",
+      "empty": "没有匹配的简历",
+      "copy": "创建副本",
+      "copySuffix": "副本",
+      "deleteOriginal": "删除原简历",
+      "deleteResume": "删除简历",
+      "kind": {
+        "original": "原简历",
+        "optimized": "优化后简历",
+        "jobOptimized": "岗位优化简历",
+        "generalOptimized": "通用优化简历"
+      },
+      "template": {
+        "label": "模板",
+        "main": "主简历",
+        "version": "版本简历"
+      },
+      "status": {
+        "saved": "已保存到本地 SQLite",
+        "importReview": "简历解析已完成，部分内容由 AI 自动归类，建议仔细甄别后再使用。"
+      },
+      "updatedAt": {
+        "edited": "最近编辑于 {date}",
+        "created": "创建于 {date}",
+        "editedUnknown": "最近编辑时间未知",
+        "createdUnknown": "创建时间未知"
+      },
+      "templates": {
+        "classic": "经典",
+        "modern": "现代",
+        "minimal": "极简",
+        "professional": "专业",
+        "two-column": "双栏",
+        "creative": "创意",
+        "ats": "ATS",
+        "academic": "学术",
+        "elegant": "优雅",
+        "executive": "高管",
+        "developer": "开发者",
+        "designer": "设计师",
+        "startup": "创业",
+        "formal": "正式",
+        "infographic": "信息图",
+        "compact": "紧凑",
+        "euro": "欧式",
+        "clean": "清爽",
+        "bold": "醒目",
+        "timeline": "时间线",
+        "nordic": "北欧",
+        "corporate": "企业",
+        "consultant": "咨询",
+        "finance": "金融",
+        "medical": "医疗",
+        "gradient": "渐变",
+        "metro": "都市",
+        "material": "材料",
+        "coder": "代码",
+        "blocks": "块面",
+        "magazine": "杂志",
+        "artistic": "艺术",
+        "retro": "复古",
+        "neon": "霓虹",
+        "watercolor": "水彩",
+        "swiss": "瑞士",
+        "japanese": "日式",
+        "berlin": "柏林",
+        "luxe": "奢雅",
+        "rose": "玫瑰",
+        "architect": "建筑",
+        "legal": "法律",
+        "teacher": "教师",
+        "scientist": "科研",
+        "engineer": "工程师",
+        "sidebar": "侧栏",
+        "card": "卡片",
+        "zigzag": "折线",
+        "ribbon": "丝带",
+        "mosaic": "马赛克"
+      }
+    }
+  },
+  "resumeSourcePicker": {
+    "title": "选择简历",
+    "library": "简历库",
+    "upload": "上传文件",
+    "doubleClickEdit": "双击进入编辑",
+    "empty": "暂无可用简历，先在简历编辑器中新建并保存一份。",
+    "parsing": "正在解析简历...",
+    "import": "导入简历",
+    "waiting": "可能需要一些时间，请保持页面打开",
+    "drag": "拖拽或点击上传",
+    "supported": "支持 PDF / DOC / DOCX / 图片 / TXT / MD / JSON",
+    "selected": "已选择 {fileName} · {count} 字",
+    "snapshotOnly": "文件仅作为本次操作的简历快照，不会覆盖简历库中的内容。"
+  },
+  "jdPreparation": {
+    "uploadJd": "上传 JD",
+    "uploadUnsupported": "JD 上传目前支持 txt 或 md 文件。",
+    "uploadEmpty": "上传的 JD 文件内容为空。",
+    "uploadImported": "已从 {fileName} 导入 {count} 字职位描述。",
+    "aiDialog": {
+      "title": "需要先配置 AI",
+      "message": "请先在设置页配置 AI，并完成连接测试后再继续。",
+      "later": "稍后再说",
+      "settings": "前往设置"
+    }
+  },
+  "match": {
+    "steps": {
+      "select": "选择简历与 JD",
+      "optimize": "AI 匹配优化",
+      "current": "当前简历",
+      "generalOptimize": "AI 简历优化",
+      "preview": "预览并编辑"
+    },
+    "resume": {
+      "original": "原简历",
+      "mainDetail": "原简历 · {skills} 项技能 · {projects} 个项目",
+      "originalDetail": "原简历 · {date}",
+      "optimizedDetail": "优化后简历 · {date}"
+    },
+    "upload": {
+      "waitingFile": "等待上传文件",
+      "selectResume": "请选择简历"
+    },
+    "status": {
+      "localParsing": "正在使用本地解析，效果可能不佳...",
+      "parsing": "正在解析简历，可能需要一些时间...",
+      "imported": "简历解析已完成，已导入 {fileName}。",
+      "fallbackImported": "已通过本地规则导入 {fileName}，请重点检查字段归类和内容完整性。",
+      "fileReadFailed": "文件读取失败。",
+      "localVersionOpened": "已打开本地优化版本。",
+      "needResume": "请先选择或上传一份简历。",
+      "needJd": "请先粘贴职位描述。",
+      "generating": "正在分析 JD 并生成优化简历...",
+      "generated": "优化结果已生成，右侧高亮区域可继续修改。",
+      "failed": "匹配优化失败，请稍后再试。"
+    },
+    "result": {
+      "generalComplete": "AI优化简历完成",
+      "jdComplete": "JD匹配优化完成",
+      "jdPrefix": "JD匹配优化",
+      "back": "返回修改 JD",
+      "track": "加入投递岗位跟进"
+    },
+    "resumePickerDescription": "选择一份作为优化基准 · 共 {count} 份",
+    "form": {
+      "title": "填写目标 JD",
+      "description": "粘贴完整的公司、岗位名称、岗位职责、任职要求与加分项，TRACEFOLIO会结合所选简历提炼重点并生成匹配版本。",
+      "jdLabel": "公司 / 岗位 / 职位描述 / 任职要求 / 加分项 *",
+      "jdPlaceholder": "请粘贴完整 JD，建议包含公司名称、完整岗位名称、岗位职责、任职要求、加分项与业务方向...",
+      "settingsTitle": "优化设置",
+      "settingsDescription": "选择本次改写侧重点；所有内容都以原简历事实为边界，不新增不存在的经历或数据。"
+    },
+    "preferences": {
+      "impact": "强调项目成果",
+      "impactDescription": "优先突出项目职责与结果证据",
+      "quantify": "补充量化表达",
+      "quantifyDescription": "只重写已有结果，不编造数字",
+      "ats": "ATS 友好",
+      "atsDescription": "优化关键词与格式，通过初筛",
+      "skills": "突出匹配技能",
+      "skillsDescription": "优先展示与 JD 对齐的技能"
+    },
+    "currentBase": "当前基准：{name}",
+    "edit": "修改",
+    "generatingButton": "正在生成...",
+    "startButton": "开始 JD匹配优化",
+    "aiSetup": {
+      "title": "需要配置 AI",
+      "later": "稍后再说"
+    }
+  },
+  "interview": {
+    "steps": {
+      "setup": "选择面试素材",
+      "preparation": "生成面试资料",
+      "session": "模拟提问与回答",
+      "report": "AI 反馈复盘"
+    },
+    "resume": {
+      "mainDetail": "原简历 · {skills} 项技能 · {projects} 个项目",
+      "originalDetail": "原简历 · {date}",
+      "optimizedDetail": "优化后简历 · {date}",
+      "uploaded": "上传简历",
+      "historySnapshot": "{name}（历史快照）"
+    },
+    "modes": {
+      "comprehensive": {
+        "label": "综合模拟",
+        "description": "8 题，覆盖完整校招流程"
+      },
+      "project": {
+        "label": "项目深挖",
+        "description": "6 题，验证项目真实性与取舍"
+      },
+      "behavioral": {
+        "label": "行为面试",
+        "description": "6 题，集中练习 STAR 表达"
+      },
+      "hr": {
+        "label": "HR 面",
+        "description": "6 题，练习动机、规划与反问"
+      }
+    },
+    "categories": {
+      "general": "历史题目",
+      "selfIntroduction": "自我介绍",
+      "motivation": "岗位动机",
+      "project": "项目深挖",
+      "professional": "专业能力",
+      "behavioral": "行为面试",
+      "failure": "失败复盘",
+      "reverseQuestion": "反问",
+      "hr": "HR 面"
+    },
+    "setup": {
+      "resumePickerDescription": "选择本轮回答所依据的简历 · 共 {count} 份",
+      "title": "填写目标 JD",
+      "description": "粘贴完整的公司、岗位名称、岗位职责与任职要求，TRACEFOLIO会结合所选简历生成面试准备资料或模拟问题。",
+      "jdLabel": "公司 / 岗位 / 职位描述 / 任职要求 / 加分项 *",
+      "jdPlaceholder": "请粘贴完整 JD，建议包含公司名称、完整岗位名称、岗位职责、任职要求、加分项与业务场景...",
+      "settingsTitle": "面试设置",
+      "settingsDescription": "选择本轮面试侧重点；问题生成后保持固定，不会在作答过程中改变。",
+      "hint": "AI 将结合所选简历与这段岗位描述生成本轮问题。",
+      "needResume": "请先选择一份包含有效内容的简历。",
+      "needJd": "请先填写岗位 JD。",
+      "generating": "正在生成问题",
+      "start": "生成题目并开始",
+      "generatingPreparation": "正在生成资料",
+      "prepare": "生成面试准备资料"
+    },
+    "preparation": {
+      "badge": "面试准备资料",
+      "edit": {
+        "action": "修改资料",
+        "save": "保存修改",
+        "cancel": "取消",
+        "saved": "修改已保存",
+        "failed": "保存失败"
+      },
+      "basedOn": "基于目标 JD 与 {resumeName} 生成",
+      "tocTitle": "资料目录",
+      "capabilityTitle": "岗位能力画像",
+      "capabilityDescription": "把 JD 的重点要求与简历中已有证据放在同一张图中，先看优先级，再决定准备顺序。",
+      "jdRequirement": "JD 要求",
+      "resumeEvidenceLevel": "简历证据",
+      "capabilityNote": "雷达图中的“简历证据”只表示当前简历能支持到什么程度，不代表对你真实能力的评分。",
+      "nextStep": "下一步",
+      "sections": {
+        "overview": "资料概览",
+        "capability": "能力画像",
+        "evidence": "证据与差距",
+        "knowledge": "核心知识",
+        "deepDives": "经历深挖",
+        "questions": "针对性问题",
+        "plan": "准备计划"
+      },
+      "evidenceTitle": "岗位要求与简历证据",
+      "evidenceDescription": "简历未体现不等于能力缺失；需要确认的信息会单独标出。",
+      "resumeEvidence": "简历依据",
+      "action": "准备动作",
+      "knowledgeTitle": "岗位核心知识",
+      "explanation": "知识讲解",
+      "currentEvidence": "你的现有基础",
+      "targetLevel": "面试前目标",
+      "selfCheck": "自测问题",
+      "deepDiveTitle": "简历与项目深挖",
+      "contribution": "需要讲清的个人贡献",
+      "followUps": "可能追问",
+      "factsToConfirm": "需要确认",
+      "questionsTitle": "针对性面试问题",
+      "planTitle": "准备计划",
+      "introductionTitle": "定制自我介绍",
+      "reverseQuestionsTitle": "反问建议",
+      "footerHint": "准备完成后可直接生成本轮题目；模拟阶段不会展示答案评分点。",
+      "back": "调整素材",
+      "start": "生成题目并开始",
+      "export": {
+        "button": "导出资料",
+        "docx": "Word 文档",
+        "docxHint": "可继续编辑的完整资料",
+        "pdf": "打印 / 保存为 PDF",
+        "pdfHint": "使用浏览器打印并另存为 PDF",
+        "downloaded": "Word 文档已下载。",
+        "printOpened": "打印窗口已打开，可选择“另存为 PDF”。",
+        "popupBlocked": "浏览器拦截了打印窗口，请允许弹出窗口后重试。",
+        "failed": "导出失败，请稍后重试。",
+        "roleFamily": "岗位方向",
+        "assumptions": "资料假设",
+        "requirementLevel": "要求级别",
+        "evidenceLevel": "证据水平",
+        "category": "问题类别",
+        "preparationDirection": "准备方向"
+      },
+      "states": {
+        "direct": "直接证据",
+        "transferable": "可迁移经历",
+        "notShown": "简历未体现",
+        "gap": "当前缺口",
+        "confirm": "待确认"
+      },
+      "priorities": {
+        "must": "必须准备",
+        "should": "建议准备",
+        "optional": "有余力再准备"
+      },
+      "requirementLevels": {
+        "core": "JD 核心要求",
+        "important": "重要要求",
+        "bonus": "加分项"
+      },
+      "evidenceLevels": {
+        "strong": "证据充分",
+        "partial": "部分证据",
+        "limited": "证据有限",
+        "unknown": "尚未体现"
+      }
+    },
+    "session": {
+      "noQuestions": "这次练习没有可用题目。",
+      "questionList": "面试问题列表",
+      "skipped": "跳过",
+      "questionProgress": "问题 {current} / {total}",
+      "focus": "面试官关注：{focus}",
+      "answer": "你的回答",
+      "answerPlaceholder": "输入你的回答。本阶段不展示 AI 评分，避免打断模拟节奏。",
+      "previous": "上一题",
+      "saveExit": "保存并退出",
+      "answerLater": "稍后回答",
+      "saveNext": "保存并下一题",
+      "finish": "结束本轮并生成复盘"
+    },
+    "report": {
+      "legacyTitle": "历史面试反馈",
+      "adjust": "调整素材",
+      "dimensions": {
+        "jobFit": "岗位匹配",
+        "structure": "表达结构",
+        "evidence": "事实证据",
+        "star": "STAR 完整"
+      },
+      "saved": "报告已自动保存",
+      "title": "{company} · {title} 模拟面试复盘",
+      "basedOn": "基于岗位 JD、{resumeName} 和本轮回答生成",
+      "strengths": "本轮优势",
+      "improvements": "优先改进",
+      "questionReview": "逐题复盘",
+      "questionNumber": "面试问题 {number}",
+      "yourAnswer": "你的回答",
+      "unanswered": "未回答 / 跳过",
+      "diagnosis": "问题诊断",
+      "suggestion": "改进建议",
+      "reference": "参考表达",
+      "nextActions": "下一轮建议",
+      "separator": "；",
+      "generating": "正在生成",
+      "practiceAgain": "再练一轮"
+    },
+    "saveState": {
+      "idle": "回答将在输入后自动保存",
+      "saving": "正在保存...",
+      "saved": "已自动保存",
+      "error": "保存失败，请重试"
+    },
+    "status": {
+      "restoring": "正在恢复面试记录...",
+      "restoreFailed": "面试记录恢复失败。",
+      "restoringPreparation": "正在打开已生成的面试复习资料...",
+      "restorePreparationFailed": "面试复习资料打开失败。",
+      "answerSaveFailed": "回答保存失败，请重试。",
+      "localParsing": "正在使用本地解析，效果可能不佳...",
+      "parsing": "正在解析简历，可能需要一些时间...",
+      "imported": "简历解析已完成，已导入 {fileName}。",
+      "fallbackImported": "已通过本地规则导入 {fileName}，请重点检查字段归类和内容完整性。",
+      "fileReadFailed": "文件读取失败。",
+      "questionsGenerated": "模拟面试题已生成，回答会自动保存。",
+      "questionFailed": "问题生成失败，请稍后重试。",
+      "generatingQuestions": "正在结合 JD 和简历生成本轮问题...",
+      "generatingPreparation": "AI 正在结合 JD 和简历生成面试准备资料...",
+      "preparationGenerated": "面试准备资料已生成。",
+      "preparationFailed": "面试准备资料生成失败，请稍后重试。",
+      "savingLastAnswer": "正在保存最后一个回答...",
+      "generatingReport": "AI 正在综合本轮回答生成复盘报告...",
+      "reportSaved": "面试复盘报告已生成并保存。",
+      "reportFailed": "报告生成失败，回答已保留，可以重试。",
+      "answerSavedExit": "本题回答已保存，可以稍后继续。",
+      "retrying": "正在沿用本轮素材生成一组新问题..."
+    },
+    "aiSetup": {
+      "title": "需要配置 AI",
+      "later": "稍后再说"
+    }
+  },
+  "pipeline": {
+    "list": {
+      "search": "搜索公司或岗位",
+      "clearSearch": "清除搜索关键词",
+      "board": "看板",
+      "list": "列表",
+      "stage": "投递阶段",
+      "role": "岗位",
+      "followUp": "下次跟进",
+      "scheduled": "已设置跟进日期",
+      "unscheduled": "未设置跟进日期",
+      "recentDays": "最近 {days} 天",
+      "clearFilters": "清空筛选",
+      "count": "{count} 条投递记录",
+      "noMatches": "没有匹配的投递记录，试试修改关键词或筛选条件。",
+      "open": "查看{company}的{role}投递信息"
+    },
+    "status": {
+      "READY": "准备投递",
+      "APPLIED": "已投递",
+      "ASSESSMENT": "笔试 / 测评",
+      "INTERVIEW": "面试中",
+      "OFFER": "Offer",
+      "REJECTED": "拒绝",
+      "ARCHIVED": "归档"
+    },
+    "round": {
+      "FIRST": "一面",
+      "SECOND": "二面",
+      "THIRD": "三面",
+      "HR": "HR 面"
+    },
+    "source": {
+      "shixiseng": "实习僧",
+      "boss": "BOSS直聘",
+      "liepin": "猎聘",
+      "zhaopin": "智联招聘",
+      "51job": "前程无忧",
+      "official": "企业官网",
+      "referral": "内推",
+      "email": "邮件",
+      "other": "其他"
+    },
+    "statusDate": {
+      "READY": "岗位截止日期",
+      "APPLIED": "投递日期",
+      "ASSESSMENT": "笔试 / 测评日期",
+      "INTERVIEW": "面试日期",
+      "OFFER": "Offer 日期",
+      "REJECTED": "拒绝日期",
+      "ARCHIVED": "归档日期"
+    },
+    "statusShortDate": {
+      "READY": "截止",
+      "APPLIED": "投递",
+      "ASSESSMENT": "测评",
+      "INTERVIEW": "面试",
+      "OFFER": "Offer",
+      "REJECTED": "拒绝",
+      "ARCHIVED": "归档"
+    },
+    "overview": {
+      "title": "数据总览",
+      "metrics": {
+        "total": "跟进岗位",
+        "active": "活跃流程",
+        "interviewRate": "面试转化",
+        "offerRate": "Offer 转化"
+      },
+      "statusChart": "阶段分布",
+      "sourceChart": "来源组成",
+      "jobCount": "岗位数",
+      "count": "{count}个",
+      "sourceCount": "{count}个 · {percent}%",
+      "noSourceData": "暂无来源数据"
+    },
+    "board": {
+      "dropInto": "松开后移入{status}",
+      "empty": "暂无岗位"
+    },
+    "add": {
+      "title": "新增投递岗位",
+      "description": "记录岗位、渠道和跟进日期，保存后可在投递记录中查看。",
+      "close": "关闭新增投递窗口",
+      "submit": "添加到跟进"
+    },
+    "edit": {
+      "title": "编辑投递信息",
+      "description": "修改岗位资料、跟进日期和当前阶段；需要彻底移除时可在底部删除。",
+      "close": "关闭编辑窗口",
+      "deleteConfirm": "删除「{company} · {title}」这条投递记录？",
+      "delete": "删除投递岗位",
+      "cancel": "取消",
+      "save": "保存修改"
+    },
+    "fields": {
+      "company": "公司",
+      "title": "岗位名称",
+      "source": "投递渠道",
+      "status": "当前状态",
+      "stage": "当前阶段",
+      "nextFollowUp": "下次跟进日期",
+      "link": "招聘链接",
+      "notes": "投递备注",
+      "jd": "岗位描述 / JD",
+      "optional": "（可选）"
+    },
+    "placeholders": {
+      "company": "输入投递的公司",
+      "title": "例：前端开发实习生",
+      "link": "例：官网岗位链接、BOSS 聊天链接",
+      "notes": "例：内推人、当前进度、材料状态",
+      "jd": "例：岗位职责、任职要求、加分项；可后续补完整 JD",
+      "jdShort": "例：岗位职责、任职要求、加分项"
+    },
+    "card": {
+      "unknownCompany": "未知公司",
+      "unknownTitle": "未知岗位",
+      "application": "岗位",
+      "editAria": "编辑{company}投递信息",
+      "editTitle": "编辑投递信息",
+      "edit": "编辑",
+      "noNotes": "暂无备注",
+      "source": "渠道：{source}",
+      "stageDate": "{label}：{date}",
+      "notRecorded": "未记录",
+      "followUp": "跟进：{date}",
+      "notSet": "未设置",
+      "resume": "简历：{resume}",
+      "unbound": "未绑定",
+      "progress": "投递进度",
+      "interviewRound": "面试中（{round}）",
+      "dragHint": "整张卡片可拖动切换阶段"
+    },
+    "timeline": {
+      "future": "未到",
+      "current": "当前",
+      "win": "达成",
+      "terminal": "结束",
+      "done": "已过"
+    }
+  },
+  "resumeWorkbench": {
+    "untitled": "未命名简历",
+    "loading": "正在载入简历编辑器...",
+    "status": {
+      "saved": "已保存到本地 SQLite",
+      "importReview": "简历解析已完成，部分内容由 AI 自动归类，建议仔细甄别后再使用。",
+      "versionNotFound": "未找到该简历版本，已打开原简历",
+      "autoSaving": "正在自动保存...",
+      "saving": "正在保存...",
+      "autoSaved": "已自动保存到本地 SQLite",
+      "mainSaved": "原简历已保存到本地 SQLite",
+      "resumeSaved": "简历已保存到本地 SQLite",
+      "autoSaveFailed": "自动保存失败，请点击保存重试",
+      "saveFailed": "保存失败，请稍后重试",
+      "localParsing": "正在使用本地兜底解析，效果可能不佳...",
+      "fallbackImported": "已使用本地规则导入，请重点检查字段归类和内容完整性。",
+      "importing": "正在解析并导入简历，可能需要一些时间，请勿离开此页面...",
+      "importFailed": "导入失败：{message}",
+      "retryLater": "请稍后重试",
+      "optimizing": "正在 AI 优化简历，可能需要一些时间...",
+      "optimizeDone": "AI 优化已完成，已生成新版本，请仔细复核后使用。",
+      "optimizeFailed": "AI 优化失败：{message}",
+      "exporting": "正在导出...",
+      "exported": {
+        "pdf": "PDF 已导出",
+        "word": "Word 已导出",
+        "image": "图片已导出"
+      },
+      "exportFailed": "导出失败，请稍后重试",
+      "parsed": "解析完成",
+      "unsaved": "未保存"
+    },
+    "aiSetup": {
+      "title": "需要配置 AI",
+      "later": "稍后再说",
+      "optimizeMessage": "请先在设置页配置并测试可用的模型服务。AI 优化简历暂不支持本地兜底。",
+      "applicationMessage": "生成求职信和招呼语需要可用的 AI 模型服务。请先在设置页完成配置并测试连接。"
+    },
+    "toolbar": {
+      "back": "返回我的简历",
+      "resumeName": "简历名称",
+      "rename": "修改简历名称",
+      "meta": "模板 {template} · {kind}",
+      "mainResume": "主简历",
+      "versionResume": "版本简历",
+      "undo": "撤销",
+      "redo": "重做",
+      "optimizing": "优化中...",
+      "optimize": "AI分析简历",
+      "applicationMessage": "求职信",
+      "export": "导出",
+      "closeTheme": "关闭主题",
+      "theme": "主题",
+      "hidePreview": "隐藏预览",
+      "showPreview": "显示预览",
+      "save": "保存"
+    },
+    "templateBar": {
+      "label": "模板"
+    },
+    "exportDialog": {
+      "title": "导出简历",
+      "description": "选择导出格式下载当前简历。",
+      "close": "关闭导出窗口",
+      "exporting": "正在导出...",
+      "cancel": "取消",
+      "formats": {
+        "pdf": {
+          "title": "PDF",
+          "subtitle": "按分页导出"
+        },
+        "word": {
+          "title": "Word",
+          "subtitle": "可编辑，版式近似"
+        },
+        "image": {
+          "title": "PNG 图片",
+          "subtitle": "分页高清长图"
+        }
+      }
+    },
+    "diagnosisDialog": {
+      "title": "AI 简历诊断",
+      "description": "先分析当前简历，再由你选择要处理的问题和优化方向。诊断不会修改原简历。",
+      "analyzing": "正在分析简历...",
+      "analyzingHint": "检查行动与结果、事实证据、表达清晰度和结构，不使用机械的 STAR 打分。",
+      "startHint": "分析只会读取脱敏后的当前简历，不会修改或覆盖任何内容。",
+      "analysisDone": "简历诊断完成。",
+      "analysisFailed": "简历诊断失败，请稍后重试。",
+      "summary": "诊断概览",
+      "issuesTitle": "诊断问题",
+      "issuesHint": "可由 AI 安全改写的问题会默认选择；缺少的真实信息需要先补充，GPA、日期等硬事实矛盾需要先核实。",
+      "selectedCount": "已选择 {count} 项",
+      "noIssues": "当前没有发现需要优先处理的明显问题。你可以关闭窗口继续使用原简历。",
+      "severity": {
+        "high": "优先处理",
+        "medium": "建议处理",
+        "low": "可选改进"
+      },
+      "groupCount": "共 {count} 项，已选择 {selected} 项",
+      "evidence": "简历原文：{evidence}",
+      "suggestion": "建议：{suggestion}",
+      "userSupplement": "需在编辑器补充",
+      "userConfirmation": "需在编辑器核实",
+      "preferencesTitle": "怎样优化",
+      "preferencesHint": "优化只会处理你勾选的问题，并始终保留原简历事实。",
+      "preferences": {
+        "clarity": {
+          "title": "表达更清楚",
+          "description": "明确个人行动和贡献，减少模糊职责。"
+        },
+        "impact": {
+          "title": "突出行动与结果",
+          "description": "使用已有证据强化“行动 + 方法 + 结果”。"
+        },
+        "concise": {
+          "title": "更加精简",
+          "description": "压缩重复和冗长句子，保留重要信息。"
+        },
+        "ats": {
+          "title": "ATS 友好",
+          "description": "使用常规表达和已有事实支持的技能关键词。"
+        }
+      },
+      "additionalDirection": {
+        "label": "告诉 AI 怎么改",
+        "optional": "可选",
+        "placeholder": "例如：保留有效建议，但不要调整 GPA；把项目经历写得更具体，把“协助”改成明确的个人行动，整体语气保持克制。",
+        "hint": "可以直接说明要改哪些内容、怎样表达，以及哪些建议不要采纳。AI 只处理你勾选的问题，并继续遵守不编造事实的边界。"
+      },
+      "optimizing": "正在按你的选择生成优化版本...",
+      "optimizationFailed": "优化失败，请稍后重试。",
+      "close": "暂不优化",
+      "startAnalysis": "开始分析",
+      "reanalyze": "重新分析",
+      "optimizeSelected": "优化已选 {count} 项",
+      "optimizingButton": "正在优化..."
+    },
+    "applicationMessageDialog": {
+      "title": "求职信与招呼语",
+      "description": "根据当前简历和职位描述生成可直接使用的申请文本。AI 只会使用你提供的真实信息。",
+      "kinds": {
+        "coverLetter": {
+          "title": "求职信",
+          "description": "适合招聘笔记私信、邮件和正式投递，完整、礼貌并突出岗位匹配。",
+          "extraPlaceholder": "例如：可立即到岗、希望长期实习；关注该团队的产品方向。只填写真实情况。"
+        },
+        "greeting": {
+          "title": "招呼语",
+          "description": "适合 Boss 直聘等即时沟通，先讲到岗条件和核心匹配点。",
+          "extraPlaceholder": "例如：可立即到岗，可连续实习 6 个月，每周 5 天，毕业时间为 2027 年 6 月。"
+        }
+      },
+      "jdLabel": "职位描述 / JD",
+      "jdPlaceholder": "粘贴招聘笔记或完整职位描述，包括岗位职责、任职要求和加分项。",
+      "extraLabel": "补充信息",
+      "extraHint": "选填，不会擅自推测",
+      "resultLabel": "生成结果",
+      "editableHint": "可以直接修改后复制",
+      "jdRequired": "请先粘贴职位描述 / JD。",
+      "generating": "正在结合简历和职位要求生成...",
+      "done": "生成完成，请核对事实后使用。",
+      "failed": "生成失败，请稍后重试。",
+      "copied": "已复制",
+      "copyFailed": "复制失败，请手动选择文本复制。",
+      "close": "关闭",
+      "copy": "复制文本",
+      "generate": "生成",
+      "regenerate": "重新生成",
+      "generatingButton": "生成中..."
+    },
+    "themePanel": {
+      "title": "主题编辑",
+      "description": "颜色、字体和页面密度会实时作用到右侧预览。",
+      "close": "关闭主题面板",
+      "recommendedColors": "推荐配色",
+      "presets": {
+        "deep": "深蓝灰",
+        "gray": "冷静灰",
+        "blue": "校招蓝",
+        "gold": "稳重金"
+      },
+      "primaryColor": "主色",
+      "accentColor": "强调色",
+      "font": "字体",
+      "fontHint": "使用本机已安装的字体；未安装所选字体时，预览和 PDF、图片导出均使用系统替代字体。",
+      "fontSize": "字号",
+      "fontSizes": {
+        "small": "小",
+        "medium": "中",
+        "large": "大"
+      },
+      "logoSize": "Logo / 图标大小",
+      "logoSizes": {
+        "small": "小",
+        "medium": "中",
+        "large": "大"
+      },
+      "lineSpacing": "行距",
+      "sectionSpacing": "模块间距",
+      "margins": "页边距",
+      "margin": {
+        "top": "上",
+        "right": "右",
+        "bottom": "下",
+        "left": "左"
+      },
+      "avatarStyle": "头像样式",
+      "avatar": {
+        "oneInch": "一寸照",
+        "circle": "圆形"
+      },
+      "reset": "重置主题"
+    }
+  },
+  "optimizationResult": {
+    "summaryTitle": "优化结果总结",
+    "openEditor": "进入编辑器修改",
+    "openEditorAria": "进入编辑器修改优化后简历",
+    "before": "原简历",
+    "after": "优化后",
+    "afterSubtitle": "已生成优化后简历，可进入编辑器继续微调。",
+    "untitled": "未命名简历",
+    "review": {
+      "draftReady": "AI 修改草稿已生成，请逐条审阅后保存。",
+      "saved": "已按你的选择保存为新的简历版本。",
+      "workflowAnalyze": "AI简历分析",
+      "workflowReview": "逐条审阅确认编辑",
+      "workflowSave": "保存AI优化简历",
+      "pageTitle": "逐条审阅 AI 修改",
+      "pageDescription": "你可以逐条采纳、取消或直接修改 AI 建议；保存后只更新这份通用优化版本，原简历不会改变。",
+      "title": "修改项审阅",
+      "description": "修改按简历模块折叠分组。取消采纳后，右侧预览会立即恢复该项原文。",
+      "acceptedCount": "已采纳 {accepted} / {total} 项",
+      "groupCount": "已采纳 {accepted} / {total} 项",
+      "acceptAll": "全部采纳",
+      "rejectAll": "全部取消",
+      "accepted": "采纳",
+      "rejected": "不采纳",
+      "original": "简历原文",
+      "suggestion": "AI 建议（可直接修改）",
+      "restore": "恢复 AI 建议",
+      "reason": "修改依据：",
+      "genericReason": "根据你选择的优化方向，提升表达清晰度和信息有效性。",
+      "itemField": "{field} · 第 {index} 项修改",
+      "cancel": "返回原简历",
+      "save": "保存AI优化简历",
+      "saving": "正在保存",
+      "versionSummary": "经逐条审阅后保存的 AI 优化简历版本。",
+      "saveFailed": "保存审阅结果失败，请稍后重试。",
+      "selectAtLeastOne": "请至少采纳一项修改；如果不需要这些修改，可以返回原简历。",
+      "noChanges": "AI 没有产生可见的文本修改，无需创建新版本。",
+      "sections": {
+        "summary": "个人总结与自我评价",
+        "education": "教育背景",
+        "experiences": "工作经历",
+        "internships": "实习经历",
+        "projects": "项目经历",
+        "skills": "技能特长",
+        "awards": "资格证书",
+        "customSections": "自定义模块"
+      },
+      "fields": {
+        "summary": "个人总结",
+        "selfReview": "自我评价",
+        "highlight": "经历要点",
+        "skills": "技能顺序与表述",
+        "awards": "证书与奖项",
+        "customContent": "模块正文"
+      }
+    }
+  },
+  "settings": {
+    "languageTitle": "语言",
+    "languageDescription": "切换应用界面语言。简历正文、岗位 JD 和本地数据不会被自动翻译。",
+    "localDataTitle": "本地数据",
+    "localDataDescription": "可以只移除内置示例，或清空全部本地业务数据和 AI 设置后重新恢复示例。",
+    "clearSampleConfirm": "一键清空全部内置示例岗位、示例简历及其生成资料？你自己创建的数据和 AI 设置不会被删除。",
+    "clearingSample": "正在清空示例数据",
+    "clearSample": "一键清空示例数据",
+    "clearSampleSuccess": "示例数据已清空，你自己创建的数据均已保留。",
+    "clearSampleFailed": "示例数据清理失败。",
+    "resetConfirm": "清空本地 SQLite 中的简历、投递进度、面试记录和 AI 设置，并恢复项目内置示例数据？",
+    "resetting": "正在恢复示例数据",
+    "reset": "重置并恢复示例数据",
+    "resetFailed": "本地数据重置失败。",
+    "ai": {
+      "title": "AI 模型配置",
+      "model": "模型",
+      "providerPlaceholder": "选择 Provider",
+      "modelPlaceholder": "选择模型",
+      "customModel": "手动输入模型 ID",
+      "customModelPlaceholder": "例如 deepseek-chat / qwen-plus / openai/gpt-5.5",
+      "apiKey": "API Key",
+      "apiKeyOptional": "API Key（可选）",
+      "apiKeySavedPlaceholder": "已保存，留空表示沿用",
+      "apiKeyPlaceholder": "粘贴你的 API Key",
+      "showAgent": "显示 Agent 小助手",
+      "savedKey": "已保存 API Key",
+      "missingKey": "未保存 API Key",
+      "runtime": "运行模式",
+      "runtimeLocal": "本地模式",
+      "dataLocation": "数据位置",
+      "keyStorage": "密钥保存",
+      "testStatus": "测试状态",
+      "deleteKey": "删除 Key",
+      "testing": "测试中...",
+      "test": "测试连接",
+      "saving": "保存中...",
+      "save": "保存设置",
+      "selected": "{provider} 已选中，保存后生效。",
+      "deletingKey": "正在删除已保存的 API Key...",
+      "savingSettings": "正在保存 AI 设置...",
+      "saveFailed": "AI 设置保存失败。",
+      "keyDeleted": "AI Key 已删除。",
+      "settingsSaved": "AI 设置已保存。",
+      "keyDeletedStatus": "已删除 API Key，并关闭 AI 功能。",
+      "settingsSavedStatus": "AI 设置已保存，建议立即测试连接。",
+      "testingConnection": "正在测试连接...",
+      "testFailed": "连接测试失败。",
+      "testComplete": "连接测试完成。",
+      "status": {
+        "success": "已通过",
+        "failed": "失败",
+        "untested": "未测试"
+      }
+    }
+  },
+  "editor": {
+    "sections": {
+      "personalInfo": "个人信息",
+      "summary": "个人简介",
+      "workExperience": "工作经历",
+      "internshipExperience": "实习经历",
+      "education": "教育背景",
+      "skills": "技能特长",
+      "projects": "项目经历",
+      "certifications": "资格证书",
+      "selfEvaluation": "自我评价",
+      "languages": "语言能力",
+      "github": "GitHub 项目",
+      "qrCodes": "二维码",
+      "custom": "自定义模块"
+    },
+    "sidebar": {
+      "sections": "简历模块",
+      "addSection": "添加模块"
+    },
+    "invalidSectionContent": "模块内容格式异常",
+    "inlineLayout": "紧凑排版",
+    "sectionLayoutFor": "{section}排版",
+    "sectionLayoutScope": "只调整此模块，修改会实时显示。",
+    "sectionLayoutMode": "排列方式",
+    "templateLayout": "默认排版",
+    "inlineBoldFields": "加粗字段",
+    "inlineFieldsEmpty": "填写内容后，可在这里选择加粗字段。",
+    "inlineFields": {
+      "institution": "学校",
+      "degree": "学历",
+      "field": "专业",
+      "location": "地点",
+      "gpa": "GPA",
+      "date": "日期",
+      "name": "证书名称",
+      "technologies": "技术栈",
+      "url": "链接",
+      "issuer": "颁发机构",
+      "language": "语言",
+      "proficiency": "熟练程度",
+      "skills": "技能",
+      "stars": "星标数",
+      "title": "标题",
+      "subtitle": "副标题",
+      "description": "描述",
+      "highlights": "亮点"
+    },
+    "aiPolish": "AI 优化",
+    "toolbar": {
+      "preview": "预览",
+      "smartOnePage": "智能一页",
+      "zoomOut": "缩小预览",
+      "zoomIn": "放大预览"
+    },
+    "mobile": {
+      "edit": "编辑",
+      "preview": "预览"
+    },
+    "fields": {
+      "fullName": "姓名",
+      "jobTitle": "目标岗位",
+      "email": "邮箱",
+      "phone": "电话",
+      "location": "所在地",
+      "website": "个人网站",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "wechat": "微信",
+      "age": "年龄",
+      "gender": "性别",
+      "politicalStatus": "政治面貌",
+      "ethnicity": "民族",
+      "hometown": "籍贯",
+      "maritalStatus": "婚姻状况",
+      "yearsOfExperience": "工作年限",
+      "educationLevel": "最高学历",
+      "description": "描述",
+      "company": "公司",
+      "position": "职位",
+      "logo": "Logo / 常用图标",
+      "uploadLogo": "上传 Logo",
+      "replaceLogo": "替换 Logo",
+      "removeLogo": "移除",
+      "commonIcons": "常用图标",
+      "chooseIcon": "选择图标",
+      "changeIcon": "更换图标",
+      "iconNames": {
+        "building": "公司",
+        "briefcase": "工作",
+        "code": "代码",
+        "cpu": "AI / 技术",
+        "chart": "数据分析",
+        "palette": "设计创意",
+        "rocket": "创业项目",
+        "users": "团队协作",
+        "landmark": "机构",
+        "graduation-cap": "教育",
+        "book-open": "研究学习",
+        "trophy": "奖项",
+        "shield-check": "安全认证",
+        "globe": "全球 / 网络",
+        "mail": "邮箱",
+        "phone": "电话"
+      },
+      "logoUploadFailed": "请上传 4MB 以内的 PNG、JPG 或 WebP 图片",
+      "startDate": "开始时间",
+      "endDate": "结束时间",
+      "highlights": "亮点",
+      "technologies": "技术/关键词",
+      "institution": "学校",
+      "degree": "学历",
+      "field": "专业",
+      "gpa": "GPA",
+      "skillCategory": "技能分类",
+      "projectName": "项目名称",
+      "certName": "证书名称",
+      "issuer": "颁发机构",
+      "certDate": "日期",
+      "language": "语言",
+      "proficiency": "熟练程度",
+      "repoUrl": "仓库地址",
+      "repoName": "仓库名",
+      "stars": "Stars",
+      "qrAutoGenerate": "自动识别链接",
+      "qrLabel": "标签",
+      "qrUrl": "链接",
+      "qrUrlInvalid": "链接格式不正确",
+      "qrAdd": "添加二维码",
+      "addItem": "添加一项",
+      "moveItemUp": "上移{label}第 {index} 项",
+      "moveItemDown": "下移{label}第 {index} 项",
+      "clear": "清空",
+      "dateDisplay": "{year}-{month}",
+      "months": {
+        "01": "01",
+        "02": "02",
+        "03": "03",
+        "04": "04",
+        "05": "05",
+        "06": "06",
+        "07": "07",
+        "08": "08",
+        "09": "09",
+        "10": "10",
+        "11": "11",
+        "12": "12"
+      }
+    }
+  },
+  "firstUseTour": {
+    "progress": "第 {current} / {total} 步",
+    "start": "开始了解",
+    "previous": "上一步",
+    "next": "下一步",
+    "finish": "开启求职之旅",
+    "skip": "跳过引导",
+    "celebrationAnnouncement": "求职之旅正式开启，祝你顺利拿到心动的 Offer！",
+    "steps": {
+      "welcome": {
+        "title": "第一次使用TRACEFOLIO？\n先看教程",
+        "description": "TRACEFOLIO会陪你完成从基础简历、岗位匹配、面试准备、投递跟进到收到 Offer 的完整流程。"
+      },
+      "dashboard": {
+        "title": "控制中心是你的求职总览",
+        "description": "投递进度、近期任务、面试安排和 Offer 都会集中显示在这里。刚开始没有数据是正常的，完成后面的流程后这里会自动更新。"
+      },
+      "settings": {
+        "title": "开始前，先连接 AI",
+        "description": "在设置中选择 AI 服务，填写 API Key，保存后测试连接。你的 Key 会加密保存在本机，不会写入项目代码。"
+      },
+      "agent": {
+        "title": "用TRACEFOLIO Agent 直接说出你要做的事",
+        "description": "点击右下角的TRACEFOLIO Agent，可以检索岗位、投递和脱敏简历，也能在你选择参数并确认后创建简历、生成岗位定制版本、面试资料与模拟面试、切换模板或更新投递卡片。它仍是实验功能，不会删除业务数据。"
+      },
+      "resume": {
+        "title": "先准备一份基础简历",
+        "description": "可以导入已有简历，也可以从头新建。原简历会一直保留，AI 分析和岗位优化会生成独立版本，不会直接覆盖原稿。"
+      },
+      "campus": {
+        "title": "在校招信息库寻找机会",
+        "description": "按公司、岗位关键词、毕业届别和工作地点筛选招聘信息，打开详情查看要求与投递入口。信息请以招聘方官方公告为准；当前安装未配置招聘数据时，这里会显示空状态。"
+      },
+      "match": {
+        "title": "再针对具体岗位做 JD 匹配",
+        "description": "选择一份简历并粘贴完整 JD，TRACEFOLIO会生成岗位定制简历，同时保留优化前后内容并建立对应岗位档案。"
+      },
+      "interview": {
+        "title": "围绕同一个岗位准备面试",
+        "description": "先生成结构化面试准备资料，再进行模拟问答，最后查看 AI 复盘。选择岗位定制简历时，资料会优先关联到对应岗位。"
+      },
+      "pipeline": {
+        "title": "用投递跟进记录求职进展",
+        "description": "把岗位更新为待投递、已投递、笔试、面试或 Offer，并记TRACEFOLIO段日期和下次跟进时间。控制中心会据此提醒你。"
+      },
+      "library": {
+        "title": "所有成果会整理到求职资料库",
+        "description": "按岗位可以查看一套完整档案，按分类可以集中查找简历、原始 JD 和面试资料。以后不需要再去各页面翻找历史成果。"
+      }
+    }
+  },
+  "careerLibrary": {
+    "title": "求职资料库",
+    "sampleJob": "示例岗位",
+    "summary": "共 {jobs} 个岗位档案 · {artifacts} 份系统生成成果",
+    "groups": {
+      "job": "按岗位",
+      "type": "按分类"
+    },
+    "searchJobs": "搜索公司、岗位或城市...",
+    "searchArtifacts": "搜索资料名称、公司或岗位...",
+    "sortLabel": "资料排序",
+    "sortRecent": "最近更新",
+    "sortOldest": "最早更新",
+    "emptyTitle": "还没有可归档的成果",
+    "emptyDescription": "完成 JD 匹配、简历优化或面试准备后，系统生成的成果会自动出现在这里。",
+    "emptySearch": "没有找到符合当前搜索的资料。",
+    "count": "{count} 份",
+    "jobCount": "{count} 个岗位",
+    "categoryCount": "{count} 份",
+    "updatedAt": "最近更新于 {date}",
+    "delete": "删除资料",
+    "deleteArtifactConfirm": "删除「{name}」？只会删除当前这份资料，其他岗位资料不会受影响。此操作无法撤销。",
+    "editArtifactName": "修改资料标题",
+    "doubleClickToRename": "{name}（双击修改标题）",
+    "unknownCompany": "该公司",
+    "unknownJob": "该岗位",
+    "deleteArchiveConfirm": "删除「{name}」岗位档案？\n\n将永久删除：\n• 原始 JD 与岗位分析\n• {resumes} 份岗位优化简历\n• {preparations} 份面试准备资料\n• {interviews} 次模拟面试与复盘\n• {applications} 条投递跟进记录\n\n你的原始简历不会被删除。此操作无法撤销。",
+    "deleteAnalysisConfirm": "删除「{name}」的原始 JD 与岗位分析？其他简历、面试资料和投递跟进记录不会受影响。此操作无法撤销。",
+    "deleteQuestionsConfirm": "删除这次模拟面试的全部问题与回答？AI 复盘会保留。此操作无法撤销。",
+    "deleteFeedbackConfirm": "删除这次模拟面试的 AI 复盘？问题与回答会保留。此操作无法撤销。",
+    "regenerateFeedbackConfirm": "根据当前回答重新生成 AI 复盘？现有复盘结果将被永久覆盖。",
+    "archiveDeleted": "岗位档案及其关联资料、投递跟进记录已删除，原始简历已保留。",
+    "analysisDeleted": "原始 JD 与岗位分析已删除。",
+    "questionsDeleted": "问题与回答已删除。",
+    "feedbackDeleted": "AI 复盘已删除。",
+    "feedbackRegenerated": "AI 复盘已重新生成。",
+    "deleteFailed": "删除失败：{error}",
+    "editJob": {
+      "action": "修改岗位名称",
+      "title": "修改岗位档案名称",
+      "description": "修改后，关联的简历和面试资料仍保留在当前岗位档案中，并会按照新的公司名称重新归类。",
+      "company": "公司名称",
+      "role": "岗位名称",
+      "save": "保存修改",
+      "saving": "正在保存",
+      "cancel": "取消",
+      "saved": "岗位名称已更新，资料已重新归类。",
+      "failed": "修改岗位名称失败：{error}"
+    },
+    "edit": {
+      "action": "修改内容",
+      "save": "保存修改",
+      "cancel": "取消",
+      "saved": "修改已保存。",
+      "failed": "保存失败，请稍后重试。",
+      "mockInterviewTitle": "修改模拟面试与复盘",
+      "answersTitle": "编辑面试回答",
+      "question": "问题 {number}",
+      "questionText": "题目",
+      "questionFocus": "考察重点",
+      "overallScore": "综合评分",
+      "review": "第 {number} 题复盘",
+      "diagnosis": "回答诊断",
+      "suggestion": "改进建议",
+      "referenceAnswer": "参考表达",
+      "dimensions": {
+        "jobFit": "岗位匹配",
+        "structure": "表达结构",
+        "evidence": "事实证据",
+        "star": "STAR 完整度"
+      }
+    },
+    "editAnswers": "编辑回答",
+    "regenerateFeedback": "重新生成 AI 复盘",
+    "regeneratingFeedback": "正在重新生成",
+    "regenerateFeedbackHint": "修改回答后可重新生成复盘；重新生成会覆盖当前 AI 复盘结果。",
+    "preparationEditor": {
+      "overview": "岗位概览",
+      "company": "公司",
+      "role": "岗位",
+      "roleFamily": "岗位类别",
+      "roleSummary": "岗位概述",
+      "assumptions": "需要确认的信息",
+      "capability": "能力画像",
+      "capabilityOverview": "能力概览",
+      "capabilityItem": "能力 {number}",
+      "name": "名称",
+      "currentEvidence": "当前证据",
+      "nextStep": "下一步",
+      "evidence": "岗位要求与证据",
+      "requirementItem": "要求 {number}",
+      "requirement": "岗位要求",
+      "resumeEvidence": "简历证据",
+      "assessment": "判断",
+      "action": "行动建议",
+      "knowledge": "核心知识",
+      "knowledgeItem": "知识主题 {number}",
+      "topic": "主题",
+      "relevance": "与岗位的关系",
+      "explanation": "知识说明",
+      "targetLevel": "目标水平",
+      "selfCheck": "自测问题",
+      "deepDives": "经历深挖",
+      "deepDiveItem": "经历 {number}",
+      "resumeItem": "简历经历",
+      "contribution": "个人贡献重点",
+      "followUps": "可能追问",
+      "facts": "待确认事实",
+      "questions": "针对性问题",
+      "questionItem": "问题 {number}",
+      "question": "问题",
+      "category": "分类",
+      "direction": "准备方向",
+      "plan": "准备计划",
+      "must": "必须准备",
+      "should": "建议准备",
+      "optional": "可选准备",
+      "selfIntro": "自我介绍",
+      "reverseQuestions": "反问问题",
+      "perLine": "（每行一项）"
+    },
+    "generalResumeSubtitle": "不关联特定岗位的通用简历优化成果",
+    "categories": {
+      "resume": "简历成果",
+      "analysis": "岗位分析",
+      "interview": "面试资料"
+    },
+    "kinds": {
+      "general-resume": "通用优化",
+      "tailored-resume": "岗位定制",
+      "job-analysis": "原始 JD",
+      "interview-preparation": "面试准备",
+      "interview-session": "模拟面试"
+    },
+    "kindShort": {
+      "general-resume": "优化简历",
+      "tailored-resume": "定制简历",
+      "job-analysis": "原始 JD",
+      "interview-preparation": "准备资料",
+      "interview-session": "模拟与复盘"
+    },
+    "kindDescriptions": {
+      "general-resume": "通用简历诊断、优化结果与修改记录。",
+      "tailored-resume": "针对目标 JD 生成的岗位定制简历。",
+      "job-analysis": "进行 JD 匹配优化时使用的原始职位描述。",
+      "interview-preparation": "围绕目标岗位整理的结构化面试准备资料。",
+      "interview-session": "模拟面试问题、回答与 AI 复盘。"
+    },
+    "metrics": {
+      "jobAnalysis": "原始 JD {count}",
+      "originalJd": "原始 JD {count}",
+      "tailoredResume": "定制简历 {count}",
+      "preparation": "准备资料 {count}",
+      "interview": "模拟面试 {count}",
+      "issues": "问题 {count}",
+      "sections": "调整模块 {count}",
+      "changes": "采纳修改 {count}",
+      "requirements": "要求 {count}",
+      "keywords": "关键词 {count}",
+      "risks": "风险 {count}",
+      "topics": "知识主题 {count}",
+      "questions": "问题 {count}",
+      "deepDives": "经历深挖 {count}",
+      "answers": "已回答 {count}",
+      "hasFeedback": "已复盘",
+      "noFeedback": "待复盘"
+    },
+    "status": {
+      "READY": "待投递",
+      "APPLIED": "已投递",
+      "ASSESSMENT": "笔试 / 测评",
+      "INTERVIEW": "面试中",
+      "OFFER": "Offer",
+      "REJECTED": "未通过",
+      "ARCHIVED": "已归档"
+    },
+    "notFoundTitle": "没有找到这份资料",
+    "notFoundDescription": "资料可能已被删除，或当前链接已经失效。",
+    "backToLibrary": "返回资料库",
+    "backToOverview": "返回岗位档案概览",
+    "openResumeEditor": "进入简历编辑器",
+    "outline": "资料目录",
+    "questionOutline": "问题目录",
+    "overviewSummary": "共 {count} 份岗位资料 · 最近更新于 {date}",
+    "overviewPathTitle": "求职准备路径",
+    "overviewPathDescription": "从岗位信息到简历与面试，直接进入已经生成的资料。",
+    "overviewPath": {
+      "analysis": "查看原始 JD 与岗位要求",
+      "resume": "查看针对岗位生成的简历版本",
+      "interview": "查看准备资料、模拟面试与复盘",
+      "empty": "暂无资料"
+    },
+    "overviewCompositionTitle": "资料构成",
+    "overviewCompositionDescription": "按岗位分析、简历成果和面试资料统计当前档案中的真实内容。",
+    "jobFilesTitle": "档案内的生成成果",
+    "jobFilesDescription": "按最近更新时间排列，点击即可查看完整内容。",
+    "emptyCategories": {
+      "analysis": "暂无岗位分析，完成 JD 匹配后会自动归入这里。",
+      "resume": "暂无岗位定制简历。",
+      "interview": "暂无面试准备、模拟面试或复盘资料。"
+    },
+    "tree": {
+      "job-overview": "岗位档案概览",
+      "overview": "优化概览",
+      "job-relation": "目标岗位与匹配依据",
+      "diagnosis": "简历诊断",
+      "diagnosis-summary": "诊断概览",
+      "strengths": "已有优势",
+      "issues": "待处理问题",
+      "original-resume": "优化前简历",
+      "optimized-resume": "优化后简历",
+      "changes": "修改对比",
+      "original-jd": "原始 JD",
+      "requirements": "岗位要求",
+      "keywords": "关键词与加分项",
+      "risks": "风险与建议",
+      "capability-profile": "能力画像",
+      "evidence-gaps": "证据与差距",
+      "core-knowledge": "核心知识",
+      "experience-deep-dives": "经历深挖",
+      "targeted-questions": "针对性问题",
+      "preparation-plan": "准备计划",
+      "questions": "问题与回答",
+      "feedback": "AI 复盘"
+    },
+    "overviewMetrics": {
+      "analysis": "原始 JD",
+      "tailoredResume": "定制简历",
+      "preparation": "准备资料",
+      "interview": "模拟面试",
+      "issues": "诊断问题",
+      "sections": "调整模块",
+      "changes": "修改记录",
+      "requirements": "岗位要求",
+      "keywords": "关键词",
+      "risks": "风险提示",
+      "questions": "面试问题",
+      "answers": "已回答",
+      "feedback": "复盘报告"
+    },
+    "resumeSections": {
+      "profile": "个人简介",
+      "education": "教育经历",
+      "experiences": "工作经历",
+      "internships": "实习经历",
+      "projects": "项目经历",
+      "skills": "专业技能",
+      "awards": "奖项证书",
+      "customSections": "其他内容"
+    },
+    "labels": {
+      "company": "目标公司",
+      "role": "目标岗位",
+      "keywords": "匹配关键词",
+      "suggestion": "建议",
+      "nextStep": "下一步",
+      "action": "准备行动"
+    },
+    "severity": {
+      "high": "优先处理",
+      "medium": "建议处理",
+      "low": "可选改进"
+    },
+    "evidence": {
+      "strong": "证据充分",
+      "partial": "部分证据",
+      "limited": "证据有限",
+      "unknown": "待确认"
+    },
+    "plan": {
+      "must": "必须准备",
+      "should": "建议准备",
+      "optional": "可选准备"
+    },
+    "interviewStatus": {
+      "IN_PROGRESS": "模拟面试进行中",
+      "COMPLETED": "模拟面试已完成"
+    },
+    "unknown": "未识别",
+    "notRecorded": "该历史资料没有记录此项内容。",
+    "issuesDescription": "仅展示生成时实际保存的诊断问题。",
+    "beforeAfterDescription": "对照优化前后的真实内容，不补造缺失信息。",
+    "originalResumeDescription": "生成该版本时实际使用的基础简历。",
+    "before": "优化前",
+    "after": "优化后",
+    "optimizationSummary": "优化说明",
+    "keywordDescription": "从 JD 中提取的关键要求与加分信息。",
+    "bonusPoints": "加分项",
+    "riskDescription": "需要在投递和面试前确认的风险与改进方向。",
+    "risks": "风险提示",
+    "suggestions": "改进建议",
+    "evidenceDescription": "岗位要求与当前简历证据的对应关系。",
+    "planDescription": "按优先级整理面试前需要完成的准备。",
+    "selfIntroduction": "自我介绍参考",
+    "reverseQuestions": "反问问题",
+    "answer": "我的回答",
+    "unanswered": "这道题尚未作答。",
+    "feedbackScore": "综合表现 {score} 分",
+    "strengths": "表现优势",
+    "improvements": "改进方向",
+    "nextActions": "下一步行动",
+    "questionNumber": "问题 {number}"
+  },
+  "agent": {
+    "title": "TRACEFOLIO Agent",
+    "panelLabel": "TRACEFOLIO Agent 对话面板",
+    "open": "打开TRACEFOLIO Agent",
+    "close": "关闭TRACEFOLIO Agent",
+    "maximize": "全屏显示",
+    "restore": "退出全屏",
+    "petHint": "今天我们从哪里开始呢？",
+    "hide": "隐藏 Agent 小助手，可在设置中重新显示",
+    "newConversation": "新对话",
+    "conversationHistory": "对话记录",
+    "deleteConversation": "删除对话",
+    "loading": "正在读取对话…",
+    "thinking": "正在思考…",
+    "inputPlaceholder": "说说你想处理的求职事项…",
+    "send": "发送",
+    "stop": "停止生成",
+    "approvalHint": "写入任何业务数据前都会先让你确认",
+    "setup": {
+      "title": "先配置 AI 服务",
+      "description": "Agent 会沿用TRACEFOLIO现有的 Provider 与模型设置，不需要额外的 Agent Key。",
+      "action": "前往设置"
+    },
+    "welcome": {
+      "title": "我能帮你处理TRACEFOLIO里的求职信息",
+      "description": "可以按条件查找校招信息、阅读招聘详情，也能检索简历与岗位，并在你选择参数和确认后生成求职资料或更新投递卡片。",
+      "prompt1": "帮我找面向 2027 届、杭州的软件开发校招信息",
+      "prompt2": "我今天投了一个岗位，帮我记录",
+      "prompt3": "我现在有哪些简历版本？"
+    },
+    "campus": {
+      "searching": "正在检索校招信息",
+      "results": "找到 {total} 条招聘记录 · 第 {page}/{pages} 页",
+      "more": "还有更多结果，可以继续下一页或缩小筛选范围。",
+      "detailHint": "点击公司名称查看完整招聘记录和相关链接。",
+      "error": "校招信息暂时无法读取，请稍后重试；这不代表没有匹配记录。"
+    },
+    "tools": {
+      "searchingPipeline": "正在核对岗位与投递记录",
+      "readingResume": "正在检索脱敏后的简历信息",
+      "resumeWorking": "正在准备简历创建操作",
+      "tailoredResumeWorking": "正在准备 JD 定制简历",
+      "interviewPreparationWorking": "正在准备面试资料",
+      "mockInterviewWorking": "正在准备模拟面试",
+      "resumePresentationWorking": "正在准备简历模板调整"
+    },
+    "configuration": {
+      "preparing": "正在整理可选设置",
+      "jdTitle": "选择这次 JD 优化方式",
+      "preparationTitle": "选择面试准备重点",
+      "simulationTitle": "选择模拟面试方式",
+      "recommended": "（推荐）",
+      "expired": "这张设置卡已被后续对话替代，请重新发起对应操作。",
+      "confirm": "按这些设置继续",
+      "jdSelected": "已采用你选择的 JD 优化设置",
+      "interviewSelected": "已采用你选择的面试设置",
+      "jdOptions": {
+        "emphasizeImpact": "突出行动与结果",
+        "quantifyResults": "优先量化成果",
+        "atsFriendly": "增强 ATS 可读性",
+        "highlightMatchedSkills": "突出 JD 匹配技能"
+      },
+      "jdOptionDescriptions": {
+        "emphasizeImpact": "把职责整理为行动、方法与结果，让经历更有说服力。",
+        "quantifyResults": "优先呈现已有的可验证数据，不添加未提供的数字。",
+        "atsFriendly": "优化结构和关键词表达，提升机器筛选的识别效果。",
+        "highlightMatchedSkills": "将岗位要求与真实经历对齐，突出已有匹配证据。"
+      },
+      "interviewModeDescriptions": {
+        "comprehensive": "兼顾技术基础、项目深挖、场景题与行为问题，适合完整演练。",
+        "project": "围绕项目背景、个人贡献、技术决策和实际结果连续追问。",
+        "behavioral": "重点练习 STAR 表达、协作冲突、复盘与成长经历。",
+        "hr": "聚焦求职动机、岗位认知、稳定性、薪资与到岗安排。"
+      }
+    },
+    "approval": {
+      "title": "确认这次投递卡片变更",
+      "preparing": "正在整理可确认的变更",
+      "operation": "操作",
+      "create": "新建卡片",
+      "update": "更新卡片",
+      "target": "岗位",
+      "status": "阶段",
+      "stageDate": "阶段日期",
+      "followUpDate": "跟进日期",
+      "note": "新增备注",
+      "resumeTitle": "确认创建一份独立简历",
+      "tailoredResumeTitle": "确认生成并保存岗位定制简历",
+      "interviewPreparationTitle": "确认生成并保存面试准备资料",
+      "mockInterviewTitle": "确认生成模拟面试题目",
+      "resumePresentationTitle": "确认切换简历模板",
+      "resumeName": "简历名称",
+      "targetRole": "目标岗位",
+      "sourceFacts": "口述事实",
+      "sourceResume": "来源简历",
+      "selectedJob": "已选择的岗位",
+      "selectedResume": "已选择的简历",
+      "jd": "岗位 JD",
+      "savedJd": "使用岗位中已保存的完整 JD",
+      "focus": "准备重点",
+      "template": "简历模板",
+      "focuses": {
+        "comprehensive": "综合准备",
+        "project": "项目深挖",
+        "behavioral": "行为面试",
+        "hr": "HR 面试"
+      },
+      "cancel": "取消",
+      "confirm": "确认执行",
+      "executing": "已确认，正在写入…",
+      "cancelled": "已取消这次变更",
+      "deniedReason": "用户取消了这次变更。",
+      "created": "已新建投递卡片：",
+      "updated": "已更新投递卡片：",
+      "resumeCreated": "独立简历已经创建。",
+      "tailoredResumeCreated": "岗位定制简历已经生成并保存。",
+      "interviewPreparationCreated": "面试准备资料已经生成并保存。",
+      "mockInterviewCreated": "模拟面试题目已经生成。",
+      "resumePresentationCreated": "简历模板已经更新。",
+      "openResult": "点击打开结果"
+    },
+    "status": {
+      "applied": "已投递",
+      "assessment": "笔试 / 测评",
+      "interview": "面试中",
+      "offer": "Offer",
+      "rejected": "已拒绝",
+      "archived": "已归档"
+    },
+    "errors": {
+      "load": "对话读取失败。",
+      "create": "对话创建失败。",
+      "delete": "对话删除失败。",
+      "request": "Agent 暂时无法完成这次请求，请检查 AI 设置后重试。",
+      "afterWrite": "内容已经成功保存，但 Agent 没能继续生成后续说明；已保存的结果不受影响。"
+    }
+  },
+  "themeEditor": {
+    "avatar": {
+      "circle": "圆形",
+      "oneInch": "1 寸照"
+    }
+  },
+  "_tracefolioNotice": "Modified for TRACEFOLIO (2026); derived from LuJie CareerKit. See NOTICE."
+}

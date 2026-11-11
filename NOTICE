@@ -1,0 +1,23 @@
+LuJie CareerKit
+Copyright 2026 Chozzc
+
+LuJie CareerKit is licensed under the Apache License, Version 2.0.
+
+The resume editor reuses design and implementation ideas from JadeAI:
+https://github.com/LingyiChen-AI/JadeAI
+
+JadeAI is licensed under the Apache License, Version 2.0. A copy of the
+JadeAI license is included at third-party/JadeAI-LICENSE.txt. LuJie CareerKit
+is not affiliated with or endorsed by the JadeAI project maintainers.
+
+TRACEFOLIO
+Copyright 2026 TRACEFOLIO contributors
+
+TRACEFOLIO is an independent derivative of LuJie CareerKit at commit
+1aa4d01447d706617f2f9399fa5389cd2461abf3, with career memory, evidence,
+growth workflows, Codex integration, and product identity changes.
+Modification details are recorded in docs/UPSTREAM.md and modified files.
+TRACEFOLIO is not affiliated with or endorsed by LuJie, JadeAI, or OpenAI.
+
+The optional Codex integration uses @openai/codex-sdk (Apache-2.0).
+Copyright 2025 OpenAI. License copy: third-party/Codex-LICENSE.txt.

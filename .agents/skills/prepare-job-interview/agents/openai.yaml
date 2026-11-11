@@ -1,0 +1,4 @@
+interface:
+  display_name: "岗位面试准备"
+  short_description: "结合简历、岗位与最新公司信息生成可执行的面试准备方案"
+  default_prompt: "使用 $prepare-job-interview 基于我的简历和岗位信息制作一份深度面试准备资料。"

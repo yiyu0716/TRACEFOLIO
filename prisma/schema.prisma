@@ -1,0 +1,214 @@
+// Modified for TRACEFOLIO (2026): career memory, evidence and growth records.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum ApplicationStatus {
+  APPLIED
+  ASSESSMENT
+  INTERVIEW
+  OFFER
+  REJECTED
+  ARCHIVED
+}
+
+model Resume {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  versions ResumeVersion[]
+
+  @@index([updatedAt])
+}
+
+model ResumeVersion {
+  id        String   @id @default(cuid())
+  name      String
+  summary   String
+  content   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  resumeId String
+  resume   Resume  @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  jobId    String?
+  job      Job?    @relation(fields: [jobId], references: [id], onDelete: SetNull)
+
+  applications          Application[]
+  interviews            InterviewSession[]
+  interviewPreparations InterviewPreparation[]
+
+  @@index([resumeId])
+  @@index([jobId])
+  @@index([updatedAt])
+}
+
+model Job {
+  id        String    @id @default(cuid())
+  company   String
+  title     String
+  city      String
+  source    String
+  jd        String
+  link      String
+  deadline  DateTime?
+  analysis  Json?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  versions              ResumeVersion[]
+  applications          Application[]
+  interviews            InterviewSession[]
+  interviewPreparations InterviewPreparation[]
+
+  @@index([company])
+  @@index([createdAt])
+}
+
+model Application {
+  id             String            @id @default(cuid())
+  status         ApplicationStatus @default(APPLIED)
+  /// The date the application was originally submitted.
+  appliedAt      DateTime?
+  /// The date the application entered its current status.
+  stageDate      DateTime?
+  nextFollowUpAt DateTime?
+  notes          String            @default("")
+  interviewRound String            @default("")
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  jobId           String
+  job             Job            @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  resumeVersionId String?
+  resumeVersion   ResumeVersion? @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+
+  @@unique([jobId])
+  @@index([resumeVersionId])
+  @@index([updatedAt])
+}
+
+model InterviewSession {
+  id                   String    @id @default(cuid())
+  mode                 String    @default("comprehensive")
+  status               String    @default("IN_PROGRESS")
+  context              Json?
+  questions            Json
+  answers              Json
+  feedback             Json
+  currentQuestionIndex Int       @default(0)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  completedAt          DateTime?
+
+  jobId           String?
+  job             Job?           @relation(fields: [jobId], references: [id], onDelete: SetNull)
+  resumeVersionId String?
+  resumeVersion   ResumeVersion? @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+
+  @@index([jobId])
+  @@index([resumeVersionId])
+  @@index([createdAt])
+}
+
+model InterviewPreparation {
+  id        String   @id @default(cuid())
+  mode      String   @default("comprehensive")
+  context   Json
+  content   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  jobId           String?
+  job             Job?           @relation(fields: [jobId], references: [id], onDelete: SetNull)
+  resumeVersionId String?
+  resumeVersion   ResumeVersion? @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+
+  @@index([jobId])
+  @@index([resumeVersionId])
+  @@index([createdAt])
+}
+
+model Settings {
+  id               String    @id @default("singleton")
+  aiProvider       String    @default("deepseek")
+  aiModel          String    @default("deepseek-v4-flash")
+  aiBaseUrl        String    @default("https://api.deepseek.com/v1")
+  aiApiKey         String    @default("")
+  aiEnabled        Boolean   @default(true)
+  aiTemperature    Float     @default(0.3)
+  aiLastTestedAt   DateTime?
+  aiLastTestStatus String    @default("untested")
+  sampleDataCleared Boolean  @default(false)
+  updatedAt        DateTime  @updatedAt
+}
+
+model AgentThread {
+  id        String   @id @default(cuid())
+  title     String   @default("新对话")
+  messages  String   @default("[]")
+  summary   String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([updatedAt])
+}
+
+// The first release is explicitly single-user. SaaS requires tenant-scoped
+// ownership for these AND the upstream models before exposing any endpoint.
+model CareerMemory {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  category    String
+  content     String
+  source      String
+  confirmed   Boolean  @default(false)
+  useInAI     Boolean  @default(false)
+  expiresAt   DateTime?
+  revision    Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category, updatedAt])
+}
+
+model CapabilityEvidence {
+  id           String   @id @default(cuid())
+  title        String
+  sourceType   String
+  sourceRef    String
+  excerpt      String
+  contribution String
+  skills       Json
+  status       String   @default("pending")
+  useInAI      Boolean  @default(false)
+  revision     Int      @default(1)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  completedActions GrowthAction[]
+
+  @@index([status, updatedAt])
+}
+
+model GrowthAction {
+  id                   String   @id @default(cuid())
+  skill                String
+  title                String
+  evidenceTarget       String
+  status               String   @default("open")
+  completionEvidenceId String?
+  completionEvidence   CapabilityEvidence? @relation(fields: [completionEvidenceId], references: [id], onDelete: Restrict)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@unique([skill, title])
+  @@index([status, updatedAt])
+}

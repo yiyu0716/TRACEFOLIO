@@ -1,0 +1,19 @@
+# Modified for TRACEFOLIO (2026): local-only preview, explicit encryption secret.
+services:
+  tracefolio:
+    build:
+      context: .
+    image: tracefolio:local
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      DATABASE_URL: file:/data/dev.db
+      LUJIE_SETTINGS_SECRET: ${LUJIE_SETTINGS_SECRET:?Run npm run setup first}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.deepseek.com/v1}
+      OPENAI_MODEL: ${OPENAI_MODEL:-deepseek-flash}
+    volumes:
+      - tracefolio-data:/data
+    restart: unless-stopped
+
+volumes:
+  tracefolio-data:

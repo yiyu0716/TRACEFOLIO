@@ -1,0 +1,4 @@
+interface:
+  display_name: "简历诊断与优化"
+  short_description: "先诊断简历，再按用户选择进行通用优化或岗位定制改写"
+  default_prompt: "使用 $resume-improvement 分析这份简历，并在我确认后进行有依据的优化。"
